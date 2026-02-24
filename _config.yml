@@ -1,5 +1,5 @@
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "" # the subpath of your site, e.g. /documents
+url: "https://cameronokeefe-topstep.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/dev-pages" # the subpath of your site, e.g. /documents
 title: Dev-pages
 description: A modern Markdown + Tailwind Jekyll site hosted on Github Pages
 
