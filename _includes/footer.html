@@ -1,0 +1,78 @@
+<footer class="bg-slate-100 border-t border-slate-200 mt-16 dark:bg-neutral-950 dark:border-neutral-800">
+  <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 justify-items-start gap-8 text-sm text-slate-600 dark:text-neutral-400">
+    
+    <!-- About -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">About</h3>
+      <p>
+        {{ site.description }}
+      </p>
+    </div>-->
+
+    <!-- Navigation -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">Navigation</h3>
+      <ul class="space-y-2">
+        {% for item in site.data.navigation %}
+          <li>
+            <a href="{{ item.url | relative_url }}" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              {{ item.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>-->
+
+    <!-- Social -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">Connect</h3>
+      <ul class="space-y-2">
+        {% if site.twitter %}
+        <li><a href="https://twitter.com/{{ site.twitter }}" class="hover:text-slate-900 dark:hover:text-neutral-100">Twitter</a></li>
+        {% endif %}
+        {% if site.github %}
+        <li><a href="https://github.com/{{ site.github }}" class="hover:text-slate-900 dark:hover:text-neutral-100">GitHub</a></li>
+        {% endif %}
+        {% if site.linkedin %}
+        <li><a href="{{ site.linkedin }}" class="hover:text-slate-900 dark:hover:text-neutral-100">LinkedIn</a></li>
+        {% endif %}
+      </ul>
+    </div>
+
+  </div>-->
+
+  <div class="text-center text-xs text-slate-500 dark:text-neutral-500">
+    © <span id="year"></span> {{ site.title }}. All rights reserved.
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById("theme-toggle");
+      var key = "theme";
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      if (!toggle) return;
+
+      function setTheme(theme, persist) {
+        var dark = theme === "dark";
+        root.classList.toggle("dark", dark);
+        root.setAttribute("data-theme", dark ? "dark" : "light");
+
+        if (persist) {
+          localStorage.setItem(key, dark ? "dark" : "light");
+        }
+
+        toggle.textContent = dark ? "Light" : "Dark";
+        toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      }
+
+      setTheme(root.classList.contains("dark") ? "dark" : "light", false);
+
+      toggle.addEventListener("click", function () {
+        setTheme(root.classList.contains("dark") ? "light" : "dark", true);
+      });
+    })();
+  </script>
+</footer>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  {% include head.html %}
+  <body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 transition-colors dark:bg-neutral-950 dark:text-neutral-100">
+
+    {% include header.html %}
+
+    <div class="w-full flex-1 max-w-7xl mx-auto px-4 py-10 flex">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 flex-1 items-stretch">
+
+        <!-- Sidebar -->
+        <aside class="md:col-span-1 h-full">
+          {% include sidebar.html %}
+        </aside>
+
+        <!-- Main Content -->
+        <main class="md:col-span-3 h-full article">
+          {{ content }}
+        </main>
+
+      </div>
+    </div>
+
+    {% include footer.html %}
+
+  </body>
+</html>

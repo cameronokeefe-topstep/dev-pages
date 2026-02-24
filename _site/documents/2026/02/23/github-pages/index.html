@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Prevent flash and apply stored/system theme before paint -->
+  <script>
+    (function () {
+      var key = "theme";
+      var stored = localStorage.getItem(key);
+      var isDark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.classList.toggle("dark", isDark);
+      document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+    })();
+  </script>
+
+  <!-- Title -->
+  <title>
+    
+      Github Pages | Dev-pages
+    
+  </title>
+
+  <link rel="stylesheet" href="/assets/css/tailwind.css">
+</head>
+
+  <body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 transition-colors dark:bg-neutral-950 dark:text-neutral-100">
+
+    <header class="bg-white/95 border-b border-slate-200 backdrop-blur dark:bg-neutral-900/95 dark:border-neutral-800">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center gap-4">
+    
+    <a href="/" class="text-2xl font-bold text-slate-900 hover:text-black transition dark:text-neutral-100 dark:hover:text-white">
+      Dev-pages
+    </a>
+
+    <div class="flex items-center gap-4">
+      <nav class="flex items-center gap-2 text-sm">
+        
+          <a 
+            href="/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            Home
+          </a>
+        
+          <a 
+            href="/documents/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            Documents
+          </a>
+        
+          <a 
+            href="/about/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            About
+          </a>
+        
+          <a 
+            href="/contact/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            Contact
+          </a>
+        
+      </nav>
+
+      <button
+        id="theme-toggle"
+        type="button"
+        class="inline-flex items-center rounded-md border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-800"
+        aria-label="Toggle theme"
+      >
+        Theme
+      </button>
+    </div>
+
+  </div>
+</header>
+
+
+    <div class="w-full flex-1 max-w-7xl mx-auto px-4 py-10 flex">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 flex-1 items-stretch">
+
+        <!-- Sidebar -->
+        <aside class="md:col-span-1 h-full">
+          <div class="sticky top-8">
+
+  <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500 mb-4 dark:text-neutral-500">
+    Documents
+  </h2>
+
+  <ul class="space-y-3 text-sm">
+    
+      <li>
+        <a 
+          href="/documents/2026/02/24/tailwind/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Tailwind
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/documents/2026/02/24/markdown/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Markdown
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/documents/2026/02/24/jekyll/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Jekyll
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/documents/2026/02/23/github-pages/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          underline text-slate-900 dark:text-neutral-100">
+          Github Pages
+        </a>
+      </li>
+    
+  </ul>
+
+</div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="md:col-span-3 h-full article">
+          <article class="prose prose-lg max-w-none prose-slate dark:prose-invert dark:prose-headings:text-neutral-100 dark:prose-p:text-neutral-200 dark:prose-strong:text-neutral-100 dark:prose-a:text-sky-400 dark:hover:prose-a:text-sky-300 dark:prose-code:text-neutral-100 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-100">
+  <h1>Github Pages</h1>
+  <p class="text-slate-500 text-sm dark:text-neutral-400 mb-8">
+    February 23, 2026
+  </p>
+
+  <p><a href="https://docs.github.com/en/pages">https://docs.github.com/en/pages</a></p>
+
+<h1 id="jekyll--github-pages--complete-user-guide">Jekyll + GitHub Pages — Complete User Guide</h1>
+
+<p>A practical, step-by-step guide to building and deploying a Jekyll website using GitHub Pages.</p>
+
+<hr />
+
+<h1 id="table-of-contents">Table of Contents</h1>
+
+<ol>
+  <li>What You’re Building</li>
+  <li>Prerequisites</li>
+  <li>Creating a New Jekyll Site</li>
+  <li>Understanding the Project Structure</li>
+  <li>Running Jekyll Locally</li>
+  <li>Creating Posts and Pages</li>
+  <li>Configuring <code class="language-plaintext highlighter-rouge">_config.yml</code></li>
+  <li>Using Liquid (Templating Basics)</li>
+  <li>Preparing for GitHub Pages</li>
+  <li>Deploying to GitHub Pages</li>
+  <li>Custom Domains</li>
+  <li>Troubleshooting</li>
+  <li>Best Practices</li>
+</ol>
+
+<hr />
+
+<h1 id="1-what-youre-building">1. What You’re Building</h1>
+
+<p>Jekyll is a <strong>static site generator</strong>.</p>
+
+<p>You write:</p>
+<ul>
+  <li>Markdown</li>
+  <li>HTML</li>
+  <li>YAML config</li>
+</ul>
+
+<p>Jekyll generates:</p>
+<ul>
+  <li>Static HTML files</li>
+</ul>
+
+<p>GitHub Pages hosts:</p>
+<ul>
+  <li>The generated static site</li>
+</ul>
+
+<hr />
+
+<h1 id="2-prerequisites">2. Prerequisites</h1>
+
+<p>Install:</p>
+
+<ul>
+  <li>Ruby (recommended via rbenv or asdf)</li>
+  <li>Bundler</li>
+  <li>Git</li>
+  <li>GitHub account</li>
+</ul>
+
+<p>Check versions:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby <span class="nt">-v</span>
+gem <span class="nt">-v</span>
+bundle <span class="nt">-v</span>
+git <span class="nt">--version</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="3-creating-a-new-jekyll-site">3. Creating a New Jekyll Site</h1>
+
+<h2 id="create-project">Create project</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>jekyll bundler
+jekyll new my-site
+<span class="nb">cd </span>my-site
+bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+<h2 id="project-structure">Project structure</h2>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my-site/
+├── _config.yml
+├── _posts/
+├── _layouts/
+├── _includes/
+├── _site/        (generated)
+├── Gemfile
+└── index.md
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="4-running-jekyll-locally">4. Running Jekyll Locally</h1>
+
+<p>Start the development server:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve <span class="nt">--livereload</span>
+</code></pre></div></div>
+
+<p>Visit:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:4000
+</code></pre></div></div>
+
+<p>Build only:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll build
+</code></pre></div></div>
+
+<p>Clean:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll clean
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="5-creating-posts">5. Creating Posts</h1>
+
+<h2 id="file-naming-format">File naming format</h2>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_posts/YYYY-MM-DD-title.md
+</code></pre></div></div>
+
+<p>Example:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">My</span><span class="nv"> </span><span class="s">First</span><span class="nv"> </span><span class="s">Post"</span>
+<span class="na">date</span><span class="pi">:</span> <span class="s">2026-02-24</span>
+<span class="na">categories</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">blog</span><span class="pi">]</span>
+<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">jekyll</span><span class="pi">,</span> <span class="nv">github</span><span class="pi">]</span>
+<span class="nn">---</span>
+
+This is my first post.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="6-creating-pages">6. Creating Pages</h1>
+
+<p>Create a page like <code class="language-plaintext highlighter-rouge">about.md</code>:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">page</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">About</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/about/</span>
+<span class="nn">---</span>
+
+This is the about page.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="7-understanding-_configyml">7. Understanding <code class="language-plaintext highlighter-rouge">_config.yml</code></h1>
+
+<p>Example configuration:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">title</span><span class="pi">:</span> <span class="s">My Website</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">Personal blog</span>
+<span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://username.github.io"</span>
+<span class="na">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>   <span class="c1"># Use "/repo-name" for project sites</span>
+
+<span class="na">markdown</span><span class="pi">:</span> <span class="s">kramdown</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/blog/:title/</span>
+
+<span class="na">timezone</span><span class="pi">:</span> <span class="s">America/New_York</span>
+
+<span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-feed</span>
+  <span class="pi">-</span> <span class="s">jekyll-seo-tag</span>
+</code></pre></div></div>
+
+<h2 id="important-baseurl">Important: baseurl</h2>
+
+<ul>
+  <li>User site → <code class="language-plaintext highlighter-rouge">""</code></li>
+  <li>Project site → <code class="language-plaintext highlighter-rouge">"/repository-name"</code></li>
+</ul>
+
+<p>Example:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/my-repo"</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="8-using-liquid-templating">8. Using Liquid (Templating)</h1>
+
+<h2 id="output-variables">Output variables</h2>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Dev-pages
+Github Pages
+</code></pre></div></div>
+
+<h2 id="loop-posts">Loop posts</h2>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul&gt;
+  
+    &lt;li&gt;
+      &lt;a href="/documents/2026/02/24/tailwind/"&gt;
+        Tailwind
+      &lt;/a&gt;
+    &lt;/li&gt;
+  
+    &lt;li&gt;
+      &lt;a href="/documents/2026/02/24/markdown/"&gt;
+        Markdown
+      &lt;/a&gt;
+    &lt;/li&gt;
+  
+    &lt;li&gt;
+      &lt;a href="/documents/2026/02/24/jekyll/"&gt;
+        Jekyll
+      &lt;/a&gt;
+    &lt;/li&gt;
+  
+    &lt;li&gt;
+      &lt;a href="/documents/2026/02/23/github-pages/"&gt;
+        Github Pages
+      &lt;/a&gt;
+    &lt;/li&gt;
+  
+&lt;/ul&gt;
+</code></pre></div></div>
+
+<h2 id="conditionals">Conditionals</h2>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  &lt;p&gt;This is a blog post&lt;/p&gt;
+
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="9-preparing-for-github-pages">9. Preparing for GitHub Pages</h1>
+
+<h2 id="commit-your-project">Commit your project</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Initial commit"</span>
+</code></pre></div></div>
+
+<h2 id="create-github-repository">Create GitHub repository</h2>
+
+<ul>
+  <li>Go to GitHub</li>
+  <li>Click “New Repository”</li>
+  <li>Name it:</li>
+</ul>
+
+<p>User site:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>username.github.io
+</code></pre></div></div>
+
+<p>Project site:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my-project
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="10-deploying-to-github-pages">10. Deploying to GitHub Pages</h1>
+
+<h2 id="option-a--let-github-build-jekyll-recommended-for-simple-sites">Option A — Let GitHub Build Jekyll (Recommended for simple sites)</h2>
+
+<p>Push to GitHub:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add origin https://github.com/username/repo-name.git
+git branch <span class="nt">-M</span> main
+git push <span class="nt">-u</span> origin main
+</code></pre></div></div>
+
+<p>Then:</p>
+
+<ol>
+  <li>Go to Repository Settings</li>
+  <li>Click “Pages”</li>
+  <li>Under “Source” → Select:
+    <ul>
+      <li>Branch: <code class="language-plaintext highlighter-rouge">main</code></li>
+      <li>Folder: <code class="language-plaintext highlighter-rouge">/ (root)</code></li>
+    </ul>
+  </li>
+  <li>Save</li>
+</ol>
+
+<p>Your site will be available at:</p>
+
+<p>User site:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://username.github.io
+</code></pre></div></div>
+
+<p>Project site:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://username.github.io/repo-name/
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="option-b--deploy-built-_site-folder-advanced">Option B — Deploy Built <code class="language-plaintext highlighter-rouge">_site/</code> Folder (Advanced)</h2>
+
+<p>Build locally:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll build
+</code></pre></div></div>
+
+<p>Deploy <code class="language-plaintext highlighter-rouge">_site/</code> contents to <code class="language-plaintext highlighter-rouge">gh-pages</code> branch.</p>
+
+<p>Often done with GitHub Actions.</p>
+
+<hr />
+
+<h1 id="11-custom-domain">11. Custom Domain</h1>
+
+<ol>
+  <li>Add a <code class="language-plaintext highlighter-rouge">CNAME</code> file to project root:</li>
+</ol>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>example.com
+</code></pre></div></div>
+
+<ol>
+  <li>Commit and push</li>
+  <li>In GitHub Pages settings:
+    <ul>
+      <li>Add custom domain</li>
+    </ul>
+  </li>
+  <li>Configure DNS:
+    <ul>
+      <li>A record → GitHub IPs</li>
+      <li>OR CNAME → username.github.io</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h1 id="12-github-pages-plugin-limitations">12. GitHub Pages Plugin Limitations</h1>
+
+<p>GitHub Pages only supports approved plugins.</p>
+
+<p>Supported examples:</p>
+<ul>
+  <li>jekyll-feed</li>
+  <li>jekyll-seo-tag</li>
+  <li>jekyll-sitemap</li>
+</ul>
+
+<p>If you need custom plugins:</p>
+<ul>
+  <li>Use GitHub Actions</li>
+  <li>Build site yourself</li>
+  <li>Deploy static output</li>
+</ul>
+
+<hr />
+
+<h1 id="13-drafts">13. Drafts</h1>
+
+<p>Create <code class="language-plaintext highlighter-rouge">_drafts/</code> folder.</p>
+
+<p>Add:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_drafts/my-draft.md
+</code></pre></div></div>
+
+<p>Serve with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve <span class="nt">--drafts</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="14-common-issues">14. Common Issues</h1>
+
+<h2 id="broken-css-or-links">Broken CSS or Links</h2>
+
+<p>Cause:</p>
+<ul>
+  <li>Incorrect <code class="language-plaintext highlighter-rouge">baseurl</code></li>
+</ul>
+
+<p>Fix:
+Use:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/assets/css/style.css
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="404-errors">404 Errors</h2>
+
+<p>Cause:</p>
+<ul>
+  <li>Wrong permalink</li>
+  <li>Missing trailing slash</li>
+</ul>
+
+<hr />
+
+<h2 id="liquid-errors">Liquid Errors</h2>
+
+<p>Check terminal output for line numbers.</p>
+
+<hr />
+
+<h2 id="site-not-updating">Site Not Updating</h2>
+
+<p>Try:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll clean
+bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="15-recommended-folder-structure">15. Recommended Folder Structure</h1>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+├── _config.yml
+├── _layouts/
+├── _includes/
+├── _posts/
+├── _data/
+├── assets/
+│   ├── css/
+│   ├── js/
+│   └── img/
+└── index.md
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="16-best-practices">16. Best Practices</h1>
+
+<ul>
+  <li>Always use <code class="language-plaintext highlighter-rouge">relative_url</code></li>
+  <li>Keep layouts minimal</li>
+  <li>Use collections for custom content types</li>
+  <li>Avoid heavy plugins</li>
+  <li>Keep <code class="language-plaintext highlighter-rouge">_site/</code> out of git (add to <code class="language-plaintext highlighter-rouge">.gitignore</code>)</li>
+  <li>Test locally before pushing</li>
+</ul>
+
+<hr />
+
+<h1 id="17-quick-deployment-checklist">17. Quick Deployment Checklist</h1>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Install Ruby + Bundler</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create Jekyll site</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Configure <code class="language-plaintext highlighter-rouge">_config.yml</code></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Test locally</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create GitHub repository</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Push code</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Enable GitHub Pages</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Verify live URL</li>
+</ul>
+
+<hr />
+
+<h1 id="18-final-workflow-summary">18. Final Workflow Summary</h1>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Write Markdown
+      ↓
+Run jekyll serve
+      ↓
+Commit &amp; push to GitHub
+      ↓
+GitHub Pages builds site
+      ↓
+Website is live
+</code></pre></div></div>
+
+<hr />
+
+<p>You now have a complete workflow for building and deploying Jekyll sites with GitHub Pages.</p>
+
+</article>
+
+        </main>
+
+      </div>
+    </div>
+
+    <footer class="bg-slate-100 border-t border-slate-200 mt-16 dark:bg-neutral-950 dark:border-neutral-800">
+  <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 justify-items-start gap-8 text-sm text-slate-600 dark:text-neutral-400">
+    
+    <!-- About -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">About</h3>
+      <p>
+        A modern Markdown + Tailwind Jekyll site hosted on Github Pages
+      </p>
+    </div>-->
+
+    <!-- Navigation -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">Navigation</h3>
+      <ul class="space-y-2">
+        
+          <li>
+            <a href="/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              Home
+            </a>
+          </li>
+        
+          <li>
+            <a href="/documents/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              Documents
+            </a>
+          </li>
+        
+          <li>
+            <a href="/about/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              About
+            </a>
+          </li>
+        
+          <li>
+            <a href="/contact/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              Contact
+            </a>
+          </li>
+        
+      </ul>
+    </div>-->
+
+    <!-- Social -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">Connect</h3>
+      <ul class="space-y-2">
+        
+        
+        
+      </ul>
+    </div>
+
+  </div>-->
+
+  <div class="text-center text-xs text-slate-500 dark:text-neutral-500">
+    © <span id="year"></span> Dev-pages. All rights reserved.
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById("theme-toggle");
+      var key = "theme";
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      if (!toggle) return;
+
+      function setTheme(theme, persist) {
+        var dark = theme === "dark";
+        root.classList.toggle("dark", dark);
+        root.setAttribute("data-theme", dark ? "dark" : "light");
+
+        if (persist) {
+          localStorage.setItem(key, dark ? "dark" : "light");
+        }
+
+        toggle.textContent = dark ? "Light" : "Dark";
+        toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      }
+
+      setTheme(root.classList.contains("dark") ? "dark" : "light", false);
+
+      toggle.addEventListener("click", function () {
+        setTheme(root.classList.contains("dark") ? "light" : "dark", true);
+      });
+    })();
+  </script>
+</footer>
+
+
+  </body>
+</html>

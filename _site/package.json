@@ -1,0 +1,19 @@
+{
+  "name": "dev-pages",
+  "version": "1.0.0",
+  "description": "Jekyll site with Tailwind CSS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests configured\"",
+    "tw:watch": "npx @tailwindcss/cli -i ./assets/css/app.css -o ./assets/css/tailwind.css --watch",
+    "tw:build": "npx @tailwindcss/cli -i ./assets/css/app.css -o ./assets/css/tailwind.css --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.1",
+    "tailwindcss": "^4.2.1"
+  }
+}

@@ -1,0 +1,26 @@
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /documents
+title: Dev-pages
+description: A modern Markdown + Tailwind Jekyll site hosted on Github Pages
+
+permalink: /documents/:year/:month/:day/:title/
+
+collections:
+  # (Optional) If you later want custom content types, add collections here.
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: "pages"
+    values:
+      layout: "page"
+
+# If you use GitHub Pages, keep plugins limited.
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-tailwind

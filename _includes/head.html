@@ -1,0 +1,29 @@
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Prevent flash and apply stored/system theme before paint -->
+  <script>
+    (function () {
+      var key = "theme";
+      var stored = localStorage.getItem(key);
+      var isDark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.classList.toggle("dark", isDark);
+      document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+    })();
+  </script>
+
+  <!-- Title -->
+  <title>
+    {% if page.title %}
+      {{ page.title }} | {{ site.title }}
+    {% else %}
+      {{ site.title }}{% if site.description %} | {{ site.description }}{% endif %}
+    {% endif %}
+  </title>
+
+  <link rel="stylesheet" href="{{ '/assets/css/tailwind.css' | relative_url }}">
+</head>

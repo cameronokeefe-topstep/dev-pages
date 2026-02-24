@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Prevent flash and apply stored/system theme before paint -->
+  <script>
+    (function () {
+      var key = "theme";
+      var stored = localStorage.getItem(key);
+      var isDark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.classList.toggle("dark", isDark);
+      document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+    })();
+  </script>
+
+  <!-- Title -->
+  <title>
+    
+      Tailwind | Dev-pages
+    
+  </title>
+
+  <link rel="stylesheet" href="/assets/css/tailwind.css">
+</head>
+
+  <body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 transition-colors dark:bg-neutral-950 dark:text-neutral-100">
+
+    <header class="bg-white/95 border-b border-slate-200 backdrop-blur dark:bg-neutral-900/95 dark:border-neutral-800">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center gap-4">
+    
+    <a href="/" class="text-2xl font-bold text-slate-900 hover:text-black transition dark:text-neutral-100 dark:hover:text-white">
+      Dev-pages
+    </a>
+
+    <div class="flex items-center gap-4">
+      <nav class="flex items-center gap-2 text-sm">
+        
+          <a 
+            href="/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            Home
+          </a>
+        
+          <a 
+            href="/documents/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            Documents
+          </a>
+        
+          <a 
+            href="/about/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            About
+          </a>
+        
+          <a 
+            href="/contact/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            Contact
+          </a>
+        
+      </nav>
+
+      <button
+        id="theme-toggle"
+        type="button"
+        class="inline-flex items-center rounded-md border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-800"
+        aria-label="Toggle theme"
+      >
+        Theme
+      </button>
+    </div>
+
+  </div>
+</header>
+
+
+    <div class="w-full flex-1 max-w-7xl mx-auto px-4 py-10 flex">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 flex-1 items-stretch">
+
+        <!-- Sidebar -->
+        <aside class="md:col-span-1 h-full">
+          <div class="sticky top-8">
+
+  <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500 mb-4 dark:text-neutral-500">
+    Documents
+  </h2>
+
+  <ul class="space-y-3 text-sm">
+    
+      <li>
+        <a 
+          href="/documents/2026/02/24/tailwind/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          underline text-slate-900 dark:text-neutral-100">
+          Tailwind
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/documents/2026/02/24/markdown/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Markdown
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/documents/2026/02/24/jekyll/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Jekyll
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/documents/2026/02/23/github-pages/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Github Pages
+        </a>
+      </li>
+    
+  </ul>
+
+</div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="md:col-span-3 h-full article">
+          <article class="prose prose-lg max-w-none prose-slate dark:prose-invert dark:prose-headings:text-neutral-100 dark:prose-p:text-neutral-200 dark:prose-strong:text-neutral-100 dark:prose-a:text-sky-400 dark:hover:prose-a:text-sky-300 dark:prose-code:text-neutral-100 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-100">
+  <h1>Tailwind</h1>
+  <p class="text-slate-500 text-sm dark:text-neutral-400 mb-8">
+    February 24, 2026
+  </p>
+
+  <p><a href="https://tailwindcss.com/docs/installation/framework-guides/nextjs">https://tailwindcss.com/docs/installation/framework-guides/nextjs</a></p>
+
+<iframe src="https://www.youtube.com/embed/Xb8ajtvFLOk?si=bU8wsFIFT54OVk6B" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+
+<h2 id="tailwind-css-cheatsheet">Tailwind CSS Cheatsheet</h2>
+
+<p>A practical reference for common <strong>Tailwind CSS</strong> utility classes (Tailwind v3+).</p>
+
+<hr />
+
+<h2 id="1-layout">1. Layout</h2>
+
+<h3 id="container">Container</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container mx-auto px-4"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="display">Display</h3>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>block | inline-block | inline | flex | inline-flex | grid | hidden
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grid"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="position">Position</h3>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>static | relative | absolute | fixed | sticky
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"relative"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"absolute top-0 right-0"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="z-index">Z-Index</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"z-10"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="2-flexbox">2. Flexbox</h2>
+
+<h3 id="direction--wrap">Direction &amp; Wrap</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex flex-row flex-wrap"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex flex-col"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="align-items--justify">Align Items / Justify</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"items-start items-center items-end"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"justify-start justify-center justify-between justify-end"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="gap">Gap</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gap-2 gap-4 gap-8"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="flex-sizing">Flex Sizing</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex-1"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex-none"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grow"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"shrink-0"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="3-grid">3. Grid</h2>
+
+<h3 id="columns--rows">Columns / Rows</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grid grid-cols-1 md:grid-cols-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grid grid-rows-2"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="spans">Spans</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-span-2 row-span-2"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="gap-1">Gap</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gap-4"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="4-spacing">4. Spacing</h2>
+
+<h3 id="padding--margin">Padding / Margin</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"p-4 px-6 py-2"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"m-4 mx-auto my-2"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="space-between-children">Space Between (children)</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"space-y-4"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"space-x-2"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="5-sizing">5. Sizing</h2>
+
+<h3 id="width--height">Width / Height</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"w-full h-screen"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"w-64 h-48"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"min-h-screen"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"max-w-3xl"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="aspect-ratio">Aspect Ratio</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"aspect-video"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="6-typography">6. Typography</h2>
+
+<h3 id="font-size--weight">Font Size / Weight</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-sm text-base text-lg text-xl text-2xl"</span><span class="nt">&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"font-normal font-medium font-semibold font-bold"</span><span class="nt">&gt;&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<h3 id="line-height--tracking">Line Height / Tracking</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"leading-tight leading-normal leading-relaxed"</span><span class="nt">&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"tracking-tight tracking-wide"</span><span class="nt">&gt;&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<h3 id="alignment">Alignment</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-left text-center text-right"</span><span class="nt">&gt;&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<h3 id="text-transform">Text Transform</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"uppercase lowercase capitalize"</span><span class="nt">&gt;&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<h3 id="truncation">Truncation</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"truncate"</span><span class="nt">&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"line-clamp-2"</span><span class="nt">&gt;&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="7-colors">7. Colors</h2>
+
+<h3 id="text--background">Text / Background</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-gray-900 bg-gray-100"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-white bg-blue-600"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="opacity">Opacity</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-black/50"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-white/80"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="8-borders--radius">8. Borders &amp; Radius</h2>
+
+<h3 id="border">Border</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border border-gray-200"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border-t border-b"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="radius">Radius</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"rounded rounded-md rounded-lg rounded-xl rounded-2xl"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"rounded-full"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="9-shadows">9. Shadows</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"shadow shadow-md shadow-lg shadow-xl"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="10-backgrounds">10. Backgrounds</h2>
+
+<h3 id="gradients">Gradients</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="background-image--cover">Background Image / Cover</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-cover bg-center"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="11-effects">11. Effects</h2>
+
+<h3 id="opacity-1">Opacity</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"opacity-0 opacity-50 opacity-100"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="blur">Blur</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"blur-sm blur-md blur-lg"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="12-transitions--animation">12. Transitions &amp; Animation</h2>
+
+<h3 id="transition">Transition</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"transition duration-200 ease-in-out hover:scale-105"</span><span class="nt">&gt;&lt;/button&gt;</span>
+</code></pre></div></div>
+
+<h3 id="common">Common</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"transition-colors"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"transition-transform"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="13-hover--focus--active">13. Hover / Focus / Active</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 active:scale-95"</span><span class="nt">&gt;</span>
+  Button
+<span class="nt">&lt;/button&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="14-responsive-breakpoints">14. Responsive Breakpoints</h2>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sm: 640px
+md: 768px
+lg: 1024px
+xl: 1280px
+2xl: 1536px
+</code></pre></div></div>
+
+<p>Example:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"p-2 md:p-6 lg:p-10"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="15-dark-mode">15. Dark Mode</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="16-state-variants">16. State Variants</h2>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hover: focus: active: disabled:
+first: last: odd: even:
+peer-<span class="ge">*, group-*</span>
+</code></pre></div></div>
+
+<h3 id="group-hover">Group Hover</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"group"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"group-hover:underline"</span><span class="nt">&gt;</span>Hover parent<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="peer">Peer</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"peer"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hidden peer-focus:block"</span><span class="nt">&gt;</span>Shows on focus<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="17-forms">17. Forms</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-blue-400"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="18-common-ui-patterns">18. Common UI Patterns</h2>
+
+<h3 id="card">Card</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"rounded-2xl border border-gray-200 bg-white p-6 shadow-md"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"text-lg font-semibold"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt-2 text-sm text-gray-600"</span><span class="nt">&gt;</span>Body text<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="button">Button</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:scale-95 transition"</span><span class="nt">&gt;</span>
+  Click
+<span class="nt">&lt;/button&gt;</span>
+</code></pre></div></div>
+
+<h3 id="input--label">Input + Label</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"block text-sm font-medium text-gray-700"</span><span class="nt">&gt;</span>Email<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"mt-1 w-full rounded-md border border-gray-300 px-3 py-2"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="19-customization">19. Customization</h2>
+
+<h3 id="arbitrary-values">Arbitrary Values</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"w-[420px] top-[3.25rem] bg-[#0f172a]"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="extend-in-tailwindconfig">Extend in tailwind.config</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// theme.extend: colors, spacing, fonts, etc.</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="20-gotchas--tips">20. Gotchas &amp; Tips</h2>
+
+<ul>
+  <li>Prefer <code class="language-plaintext highlighter-rouge">gap-*</code> over margins for spacing in flex/grid.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">container mx-auto</code> for centered layouts.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">prose</code> (Typography plugin) for rich text.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">clsx</code>/<code class="language-plaintext highlighter-rouge">cn</code> helper for conditional classes.</li>
+</ul>
+
+<hr />
+
+<p><strong>Tip:</strong> Build by composing utilities; extract components when repetition shows up.</p>
+
+</article>
+
+        </main>
+
+      </div>
+    </div>
+
+    <footer class="bg-slate-100 border-t border-slate-200 mt-16 dark:bg-neutral-950 dark:border-neutral-800">
+  <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 justify-items-start gap-8 text-sm text-slate-600 dark:text-neutral-400">
+    
+    <!-- About -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">About</h3>
+      <p>
+        A modern Markdown + Tailwind Jekyll site hosted on Github Pages
+      </p>
+    </div>-->
+
+    <!-- Navigation -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">Navigation</h3>
+      <ul class="space-y-2">
+        
+          <li>
+            <a href="/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              Home
+            </a>
+          </li>
+        
+          <li>
+            <a href="/documents/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              Documents
+            </a>
+          </li>
+        
+          <li>
+            <a href="/about/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              About
+            </a>
+          </li>
+        
+          <li>
+            <a href="/contact/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              Contact
+            </a>
+          </li>
+        
+      </ul>
+    </div>-->
+
+    <!-- Social -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">Connect</h3>
+      <ul class="space-y-2">
+        
+        
+        
+      </ul>
+    </div>
+
+  </div>-->
+
+  <div class="text-center text-xs text-slate-500 dark:text-neutral-500">
+    © <span id="year"></span> Dev-pages. All rights reserved.
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById("theme-toggle");
+      var key = "theme";
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      if (!toggle) return;
+
+      function setTheme(theme, persist) {
+        var dark = theme === "dark";
+        root.classList.toggle("dark", dark);
+        root.setAttribute("data-theme", dark ? "dark" : "light");
+
+        if (persist) {
+          localStorage.setItem(key, dark ? "dark" : "light");
+        }
+
+        toggle.textContent = dark ? "Light" : "Dark";
+        toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      }
+
+      setTheme(root.classList.contains("dark") ? "dark" : "light", false);
+
+      toggle.addEventListener("click", function () {
+        setTheme(root.classList.contains("dark") ? "light" : "dark", true);
+      });
+    })();
+  </script>
+</footer>
+
+
+  </body>
+</html>

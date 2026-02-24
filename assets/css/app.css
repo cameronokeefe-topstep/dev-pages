@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Global markdown typography for any rendered .article content */
+.article {
+  @apply max-w-none text-slate-800 dark:text-neutral-200;
+}
+
+.article > * + * {
+  @apply mt-5;
+}
+
+.article h1 {
+  @apply mt-2 mb-4 text-3xl font-bold tracking-tight text-slate-900 dark:text-neutral-100;
+}
+
+.article h2 {
+  @apply mt-10 mb-3 text-2xl font-semibold tracking-tight text-slate-900 dark:text-neutral-100;
+}
+
+.article h3 {
+  @apply mt-8 mb-2 text-xl font-semibold text-slate-900 dark:text-neutral-100;
+}
+
+.article h4 {
+  @apply mt-6 mb-2 text-lg font-semibold text-slate-900 dark:text-neutral-100;
+}
+
+.article p {
+  @apply leading-relaxed;
+}
+
+.article a {
+  @apply font-medium text-blue-700 underline decoration-blue-300 underline-offset-2 transition hover:text-blue-800 dark:text-sky-400 dark:decoration-sky-700 dark:hover:text-sky-300;
+}
+
+.article ul {
+  @apply list-disc pl-6 space-y-2;
+}
+
+.article ol {
+  @apply list-decimal pl-6 space-y-2;
+}
+
+.article li > ul,
+.article li > ol {
+  @apply mt-2;
+}
+
+.article blockquote {
+  @apply border-l-4 border-slate-300 pl-4 italic text-slate-700 dark:border-neutral-700 dark:text-neutral-300;
+}
+
+.article hr {
+  @apply border-0 border-t border-slate-200 my-8 dark:border-neutral-800;
+}
+
+.article code {
+  @apply rounded bg-slate-100 px-1.5 py-0.5 text-sm text-slate-900 dark:bg-neutral-900 dark:text-neutral-100;
+}
+
+.article pre {
+  @apply overflow-x-auto rounded-lg bg-slate-100 p-4 text-sm leading-relaxed text-slate-900 dark:bg-neutral-900 dark:text-neutral-100;
+}
+
+.article pre code {
+  @apply bg-transparent p-0 text-inherit;
+}
+
+.article table {
+  @apply w-full border-collapse overflow-hidden rounded-lg text-sm;
+}
+
+.article thead {
+  @apply bg-slate-100 dark:bg-neutral-900;
+}
+
+.article th {
+  @apply border border-slate-200 px-3 py-2 text-left font-semibold text-slate-900 dark:border-neutral-700 dark:text-neutral-100;
+}
+
+.article td {
+  @apply border border-slate-200 px-3 py-2 align-top dark:border-neutral-700;
+}
+
+.article img,
+.article video {
+  @apply rounded-lg border border-slate-200 dark:border-neutral-800;
+}
+
+.article figure {
+  @apply my-6;
+}
+
+.article figcaption {
+  @apply mt-2 text-sm text-slate-500 dark:text-neutral-400;
+}
+
+.article iframe{
+  width:100%;
+  aspect-ratio: 16/9;
+  margin-bottom: 30px;
+}
+
+/* Optional but useful in Jekyll */
+@source "../../_layouts";
+@source "../../_includes";
+@source "../../_posts";
+@source "../../*.{html,md,markdown}";

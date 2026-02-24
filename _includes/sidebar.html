@@ -1,0 +1,20 @@
+<div class="sticky top-8">
+
+  <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500 mb-4 dark:text-neutral-500">
+    Documents
+  </h2>
+
+  <ul class="space-y-3 text-sm">
+    {% for post in site.posts %}
+      <li>
+        <a 
+          href="{{ post.url | relative_url }}"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          {% if page.url == post.url %}underline text-slate-900 dark:text-neutral-100{% endif %}">
+          {{ post.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+</div>

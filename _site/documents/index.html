@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Prevent flash and apply stored/system theme before paint -->
+  <script>
+    (function () {
+      var key = "theme";
+      var stored = localStorage.getItem(key);
+      var isDark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.classList.toggle("dark", isDark);
+      document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+    })();
+  </script>
+
+  <!-- Title -->
+  <title>
+    
+      Documents | Dev-pages
+    
+  </title>
+
+  <link rel="stylesheet" href="/assets/css/tailwind.css">
+</head>
+
+  <body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 transition-colors dark:bg-neutral-950 dark:text-neutral-100">
+
+    <header class="bg-white/95 border-b border-slate-200 backdrop-blur dark:bg-neutral-900/95 dark:border-neutral-800">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center gap-4">
+    
+    <a href="/" class="text-2xl font-bold text-slate-900 hover:text-black transition dark:text-neutral-100 dark:hover:text-white">
+      Dev-pages
+    </a>
+
+    <div class="flex items-center gap-4">
+      <nav class="flex items-center gap-2 text-sm">
+        
+          <a 
+            href="/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            Home
+          </a>
+        
+          <a 
+            href="/documents/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            font-semibold text-slate-900 bg-slate-100 border-slate-200 dark:text-neutral-100 dark:bg-neutral-800 dark:border-neutral-700">
+            Documents
+          </a>
+        
+          <a 
+            href="/about/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            About
+          </a>
+        
+          <a 
+            href="/contact/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            Contact
+          </a>
+        
+      </nav>
+
+      <button
+        id="theme-toggle"
+        type="button"
+        class="inline-flex items-center rounded-md border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-800"
+        aria-label="Toggle theme"
+      >
+        Theme
+      </button>
+    </div>
+
+  </div>
+</header>
+
+
+    <div class="w-full flex-1 max-w-7xl mx-auto px-4 py-10 flex">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 flex-1 items-stretch">
+
+        <!-- Sidebar -->
+        <aside class="md:col-span-1 h-full">
+          <div class="sticky top-8">
+
+  <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500 mb-4 dark:text-neutral-500">
+    Documents
+  </h2>
+
+  <ul class="space-y-3 text-sm">
+    
+      <li>
+        <a 
+          href="/documents/2026/02/24/tailwind/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Tailwind
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/documents/2026/02/24/markdown/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Markdown
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/documents/2026/02/24/jekyll/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Jekyll
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/documents/2026/02/23/github-pages/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Github Pages
+        </a>
+      </li>
+    
+  </ul>
+
+</div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="md:col-span-3 h-full article">
+          <article>
+  <h1>Documents</h1>
+  <ul>
+  
+    <li>
+      <a href="/documents/2026/02/24/tailwind/">Tailwind</a>
+      <small>— Feb 24, 2026</small>
+    </li>
+  
+    <li>
+      <a href="/documents/2026/02/24/markdown/">Markdown</a>
+      <small>— Feb 24, 2026</small>
+    </li>
+  
+    <li>
+      <a href="/documents/2026/02/24/jekyll/">Jekyll</a>
+      <small>— Feb 24, 2026</small>
+    </li>
+  
+    <li>
+      <a href="/documents/2026/02/23/github-pages/">Github Pages</a>
+      <small>— Feb 23, 2026</small>
+    </li>
+  
+</ul>
+</article>
+        </main>
+
+      </div>
+    </div>
+
+    <footer class="bg-slate-100 border-t border-slate-200 mt-16 dark:bg-neutral-950 dark:border-neutral-800">
+  <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 justify-items-start gap-8 text-sm text-slate-600 dark:text-neutral-400">
+    
+    <!-- About -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">About</h3>
+      <p>
+        A modern Markdown + Tailwind Jekyll site hosted on Github Pages
+      </p>
+    </div>-->
+
+    <!-- Navigation -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">Navigation</h3>
+      <ul class="space-y-2">
+        
+          <li>
+            <a href="/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              Home
+            </a>
+          </li>
+        
+          <li>
+            <a href="/documents/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              Documents
+            </a>
+          </li>
+        
+          <li>
+            <a href="/about/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              About
+            </a>
+          </li>
+        
+          <li>
+            <a href="/contact/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              Contact
+            </a>
+          </li>
+        
+      </ul>
+    </div>-->
+
+    <!-- Social -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">Connect</h3>
+      <ul class="space-y-2">
+        
+        
+        
+      </ul>
+    </div>
+
+  </div>-->
+
+  <div class="text-center text-xs text-slate-500 dark:text-neutral-500">
+    © <span id="year"></span> Dev-pages. All rights reserved.
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById("theme-toggle");
+      var key = "theme";
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      if (!toggle) return;
+
+      function setTheme(theme, persist) {
+        var dark = theme === "dark";
+        root.classList.toggle("dark", dark);
+        root.setAttribute("data-theme", dark ? "dark" : "light");
+
+        if (persist) {
+          localStorage.setItem(key, dark ? "dark" : "light");
+        }
+
+        toggle.textContent = dark ? "Light" : "Dark";
+        toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      }
+
+      setTheme(root.classList.contains("dark") ? "dark" : "light", false);
+
+      toggle.addEventListener("click", function () {
+        setTheme(root.classList.contains("dark") ? "light" : "dark", true);
+      });
+    })();
+  </script>
+</footer>
+
+
+  </body>
+</html>
