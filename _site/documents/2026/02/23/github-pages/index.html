@@ -25,7 +25,7 @@
     
   </title>
 
-  <link rel="stylesheet" href="/assets/css/tailwind.css">
+  <link rel="stylesheet" href="/dev-pages/assets/css/tailwind.css">
 </head>
 
   <body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 transition-colors dark:bg-neutral-950 dark:text-neutral-100">
@@ -33,7 +33,7 @@
     <header class="bg-white/95 border-b border-slate-200 backdrop-blur dark:bg-neutral-900/95 dark:border-neutral-800">
   <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center gap-4">
     
-    <a href="/" class="text-2xl font-bold text-slate-900 hover:text-black transition dark:text-neutral-100 dark:hover:text-white">
+    <a href="/dev-pages/" class="text-2xl font-bold text-slate-900 hover:text-black transition dark:text-neutral-100 dark:hover:text-white">
       Dev-pages
     </a>
 
@@ -41,28 +41,28 @@
       <nav class="flex items-center gap-2 text-sm">
         
           <a 
-            href="/"
+            href="/dev-pages/"
             class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
             ">
             Home
           </a>
         
           <a 
-            href="/documents/"
+            href="/dev-pages/documents/"
             class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
             ">
             Documents
           </a>
         
           <a 
-            href="/about/"
+            href="/dev-pages/about/"
             class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
             ">
             About
           </a>
         
           <a 
-            href="/contact/"
+            href="/dev-pages/contact/"
             class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
             ">
             Contact
@@ -99,7 +99,16 @@
     
       <li>
         <a 
-          href="/documents/2026/02/24/tailwind/"
+          href="/dev-pages/documents/2026/02/24/testpost/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          My New Post
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/dev-pages/documents/2026/02/24/tailwind/"
           class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
           ">
           Tailwind
@@ -108,7 +117,7 @@
     
       <li>
         <a 
-          href="/documents/2026/02/24/markdown/"
+          href="/dev-pages/documents/2026/02/24/markdown/"
           class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
           ">
           Markdown
@@ -117,7 +126,7 @@
     
       <li>
         <a 
-          href="/documents/2026/02/24/jekyll/"
+          href="/dev-pages/documents/2026/02/24/jekyll/"
           class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
           ">
           Jekyll
@@ -126,7 +135,7 @@
     
       <li>
         <a 
-          href="/documents/2026/02/23/github-pages/"
+          href="/dev-pages/documents/2026/02/23/github-pages/"
           class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
           underline text-slate-900 dark:text-neutral-100">
           Github Pages
@@ -350,25 +359,31 @@ Github Pages
 <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul&gt;
   
     &lt;li&gt;
-      &lt;a href="/documents/2026/02/24/tailwind/"&gt;
+      &lt;a href="/dev-pages/documents/2026/02/24/testpost/"&gt;
+        My New Post
+      &lt;/a&gt;
+    &lt;/li&gt;
+  
+    &lt;li&gt;
+      &lt;a href="/dev-pages/documents/2026/02/24/tailwind/"&gt;
         Tailwind
       &lt;/a&gt;
     &lt;/li&gt;
   
     &lt;li&gt;
-      &lt;a href="/documents/2026/02/24/markdown/"&gt;
+      &lt;a href="/dev-pages/documents/2026/02/24/markdown/"&gt;
         Markdown
       &lt;/a&gt;
     &lt;/li&gt;
   
     &lt;li&gt;
-      &lt;a href="/documents/2026/02/24/jekyll/"&gt;
+      &lt;a href="/dev-pages/documents/2026/02/24/jekyll/"&gt;
         Jekyll
       &lt;/a&gt;
     &lt;/li&gt;
   
     &lt;li&gt;
-      &lt;a href="/documents/2026/02/23/github-pages/"&gt;
+      &lt;a href="/dev-pages/documents/2026/02/23/github-pages/"&gt;
         Github Pages
       &lt;/a&gt;
     &lt;/li&gt;
@@ -536,7 +551,7 @@ git push <span class="nt">-u</span> origin main
 <p>Fix:
 Use:</p>
 
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/assets/css/style.css
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/dev-pages/assets/css/style.css
 </code></pre></div></div>
 
 <hr />
@@ -653,25 +668,25 @@ Website is live
       <ul class="space-y-2">
         
           <li>
-            <a href="/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+            <a href="/dev-pages/" class="hover:text-slate-900 dark:hover:text-neutral-100">
               Home
             </a>
           </li>
         
           <li>
-            <a href="/documents/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+            <a href="/dev-pages/documents/" class="hover:text-slate-900 dark:hover:text-neutral-100">
               Documents
             </a>
           </li>
         
           <li>
-            <a href="/about/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+            <a href="/dev-pages/about/" class="hover:text-slate-900 dark:hover:text-neutral-100">
               About
             </a>
           </li>
         
           <li>
-            <a href="/contact/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+            <a href="/dev-pages/contact/" class="hover:text-slate-900 dark:hover:text-neutral-100">
               Contact
             </a>
           </li>

@@ -21,7 +21,7 @@
   <!-- Title -->
   <title>
     
-      Home | Dev-pages
+      My New Post | Dev-pages
     
   </title>
 
@@ -43,7 +43,7 @@
           <a 
             href="/dev-pages/"
             class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
-            font-semibold text-slate-900 bg-slate-100 border-slate-200 dark:text-neutral-100 dark:bg-neutral-800 dark:border-neutral-700">
+            ">
             Home
           </a>
         
@@ -101,7 +101,7 @@
         <a 
           href="/dev-pages/documents/2026/02/24/testpost/"
           class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
-          ">
+          underline text-slate-900 dark:text-neutral-100">
           My New Post
         </a>
       </li>
@@ -150,106 +150,15 @@
 
         <!-- Main Content -->
         <main class="md:col-span-3 h-full article">
-          <h1 class="text-3xl font-bold">Dev-pages</h1>
-<p>A modern Markdown + Tailwind Jekyll site hosted on Github Pages</p>
+          <article class="prose prose-lg max-w-none prose-slate dark:prose-invert dark:prose-headings:text-neutral-100 dark:prose-p:text-neutral-200 dark:prose-strong:text-neutral-100 dark:prose-a:text-sky-400 dark:hover:prose-a:text-sky-300 dark:prose-code:text-neutral-100 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-100">
+  <h1>My New Post</h1>
+  <p class="text-slate-500 text-sm dark:text-neutral-400 mb-8">
+    February 24, 2026
+  </p>
 
-<h2>Latest documents (posts)</h2>
-<ul>
-  
-    <li>
-      <a href="/dev-pages/documents/2026/02/24/testpost/">My New Post</a>
-      <small>— Feb 24, 2026</small>
-    </li>
-  
-    <li>
-      <a href="/dev-pages/documents/2026/02/24/tailwind/">Tailwind</a>
-      <small>— Feb 24, 2026</small>
-    </li>
-  
-    <li>
-      <a href="/dev-pages/documents/2026/02/24/markdown/">Markdown</a>
-      <small>— Feb 24, 2026</small>
-    </li>
-  
-    <li>
-      <a href="/dev-pages/documents/2026/02/24/jekyll/">Jekyll</a>
-      <small>— Feb 24, 2026</small>
-    </li>
-  
-    <li>
-      <a href="/dev-pages/documents/2026/02/23/github-pages/">Github Pages</a>
-      <small>— Feb 23, 2026</small>
-    </li>
-  
-</ul>
+  <p>This post was added directly from Github. Once commited, the workfow automatically runs and publishes the new page.</p>
 
-<h2 id="add-a-new-post">Add a new post</h2>
-
-<ol>
-  <li>Create a file in <code class="language-plaintext highlighter-rouge">_posts/</code> named <code class="language-plaintext highlighter-rouge">YYYY-MM-DD-title.md</code>.</li>
-  <li>Add front matter and content, for example:</li>
-</ol>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">My</span><span class="nv"> </span><span class="s">New</span><span class="nv"> </span><span class="s">Post"</span>
-<span class="na">date</span><span class="pi">:</span> <span class="s">2026-02-24</span>
-<span class="nn">---</span>
-
-Write your post content here.
-</code></pre></div></div>
-
-<ol>
-  <li>Open <code class="language-plaintext highlighter-rouge">http://localhost:4000</code> after running <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> to confirm it renders.</li>
-</ol>
-
-<h2 id="add-a-new-page">Add a new page</h2>
-
-<ol>
-  <li>Create a new file in <code class="language-plaintext highlighter-rouge">pages/</code>, for example <code class="language-plaintext highlighter-rouge">pages/about.md</code>.</li>
-  <li>Add front matter and content, for example:</li>
-</ol>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">About"</span>
-<span class="na">permalink</span><span class="pi">:</span> <span class="s">/about/</span>
-<span class="nn">---</span>
-
-Page content goes here.
-</code></pre></div></div>
-
-<ol>
-  <li>Visit <code class="language-plaintext highlighter-rouge">http://localhost:4000/about/</code> to verify the page.</li>
-</ol>
-
-<h2 id="why-you-should-always-use-bundle-exec">Why You Should Always Use bundle exec</h2>
-
-<p>Instead of:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll serve
-</code></pre></div></div>
-
-<p>You should run:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
-</code></pre></div></div>
-
-<h2 id="this-ensures">This ensures:</h2>
-
-<p>You’re using the Jekyll version defined in your Gemfile
-Not some global Ruby version installed on your system</p>
-
-<h2 id="run-both">Run both</h2>
-<p>In one terminal (Ruby):</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
-</code></pre></div></div>
-
-<p>In another terminal (Node):</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run tw:watch
-</code></pre></div></div>
-
+</article>
 
         </main>
 
