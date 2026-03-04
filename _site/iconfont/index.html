@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Prevent flash and apply stored/system theme before paint -->
+  <script>
+    (function () {
+      var key = "theme";
+      var stored = localStorage.getItem(key);
+      var isDark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.classList.toggle("dark", isDark);
+      document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+    })();
+  </script>
+
+  <!-- Title -->
+  <title>
+    
+      Iconfont | Dev-pages
+    
+  </title>
+
+  <link rel="stylesheet" href="/dev-pages/assets/css/tailwind.css">
+</head>
+
+  <body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 transition-colors dark:bg-neutral-950 dark:text-neutral-100">
+
+    <header class="bg-white/95 border-b border-slate-200 backdrop-blur dark:bg-neutral-900/95 dark:border-neutral-800">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center gap-4">
+    
+    <a href="/dev-pages/" class="text-2xl font-bold text-slate-900 hover:text-black transition dark:text-neutral-100 dark:hover:text-white">
+      Dev-pages
+    </a>
+
+    <div class="flex items-center gap-4">
+      <nav class="flex items-center gap-2 text-sm">
+        
+          <a 
+            href="/dev-pages/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            Home
+          </a>
+        
+          <a 
+            href="/dev-pages/documents/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            Documents
+          </a>
+        
+          <a 
+            href="/dev-pages/about/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            About
+          </a>
+        
+          <a 
+            href="/dev-pages/contact/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            Contact
+          </a>
+        
+      </nav>
+
+      <button
+        id="theme-toggle"
+        type="button"
+        class="inline-flex items-center rounded-md border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-800"
+        aria-label="Toggle theme"
+      >
+        <span class="hidden dark:block"><!-- _includes/icon.html -->
+
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high" viewBox="0 0 16 16">
+  <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+</svg></span>
+        <span class="block dark:hidden"><!-- _includes/icon.html -->
+
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon" viewBox="0 0 16 16">
+  <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
+</svg></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+
+    <div class="w-full flex-1 max-w-7xl mx-auto px-4 py-10 flex">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 flex-1 items-stretch">
+
+        <!-- Sidebar -->
+        <aside class="md:col-span-1 h-full">
+          <div class="sticky top-8">
+
+  <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500 mb-4 dark:text-neutral-500">
+    Documents
+  </h2>
+
+  <ul class="space-y-3 text-sm">
+    
+      <li>
+        <a 
+          href="/dev-pages/documents/2026/03/03/github-merges/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Github Merges
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/dev-pages/documents/2026/02/24/testpost/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          My New Post
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/dev-pages/documents/2026/02/24/tailwind/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Tailwind
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/dev-pages/documents/2026/02/24/markdown/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Markdown
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/dev-pages/documents/2026/02/24/jekyll/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Jekyll
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/dev-pages/documents/2026/02/23/github-pages/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Github Pages
+        </a>
+      </li>
+    
+  </ul>
+  <a
+        id="add-page"
+        href="https://github.com/cameronokeefe-topstep/dev-pages/tree/main/_posts"
+        class="inline-flex items-center rounded-md border border-slate-300 px-1.5 py-1.5 mt-4 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-800"
+        target="_blank"
+      >
+        <span><!-- _includes/icon.html -->
+
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+</svg></span>
+  </a>
+
+</div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="md:col-span-3 h-full article">
+          <article>
+  <h1>Iconfont</h1>
+  <style>
+  .wrap{
+    margin: 30px 0;
+    padding:50px;
+    border-radius: 20px;
+  }
+  .row {
+      margin-left: -20px;
+      margin-bottom: 30px;
+      *zoom: 1;
+    }
+    .row:before,
+    .row:after {
+      display: table;
+      content: "";
+      line-height: 0;
+    }
+    .row:after {
+      clear: both;
+    }
+    .span3 {
+      float: left;
+      min-height: 1px;
+      margin-left: 20px;
+      width: calc(25% - 20px);
+      text-align: center;
+    }
+    .container {
+      margin-right: auto;
+      margin-left: auto;
+      *zoom: 1;
+      text-align: center;
+    }
+    .container:before,
+    .container:after {
+      display: table;
+      content: "";
+      line-height: 0;
+    }
+    .container:after {
+      clear: both;
+    }
+    .i-code {
+      display: block;
+    }
+    @font-face {
+      font-family: 'topstep-iconfont';
+      src: url('../assets/fonts/topstep-iconfont/font/topstep-iconfont.eot?81509541');
+      src: url('../assets/fonts/topstep-iconfont/font/topstep-iconfont.eot?81509541#iefix') format('embedded-opentype'),
+           url('../assets/fonts/topstep-iconfont/font/topstep-iconfont.woff?81509541') format('woff'),
+           url('../assets/fonts/topstep-iconfont/font/topstep-iconfont.ttf?81509541') format('truetype'),
+           url('../assets/fonts/topstep-iconfont/font/topstep-iconfont.svg?81509541#topstep-iconfont') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+    .demo-icon {
+      font-family: "topstep-iconfont";
+      font-style: normal;
+      font-weight: normal;
+      speak: never;
+      font-size: 48px;
+     
+      display: block;
+      text-decoration: inherit;
+      width: 1em;
+      margin:0 auto;
+      margin-bottom: 10px;
+      text-align: center;
+      /* opacity: .8; */
+     
+      /* For safety - reset parent styles, that can break glyph codes*/
+      font-variant: normal;
+      text-transform: none;
+     
+      /* fix buttons height, for twitter bootstrap */
+      line-height: 1em;
+     
+      /* Animation center compensation - margins should be symmetric */
+      /* remove if not needed */
+     
+      /* You can be more comfortable with increased icons size */
+      /* font-size: 120%; */
+     
+      /* Font smoothing. That was taken from TWBS */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+     
+      /* Uncomment for 3D effect */
+      /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+    }
+    .small-icons .demo-icon{
+      font-size:24px;
+      line-height: 1em;
+    }
+    </style>
+    <div class="wrap bg-slate-100 dark:bg-neutral-900">
+      <div class="container" id="icons">
+        
+      <div class="row">
+        <div class="span3" title="Code: 0xe800">
+          <i class="demo-icon ts-icon-ai">&#xe800;</i> <span class="i-name">ts-icon-ai</span><span class="i-code">0xe800</span>
+        </div>
+        <div class="span3" title="Code: 0xe801">
+          <i class="demo-icon ts-icon-article">&#xe801;</i> <span class="i-name">ts-icon-article</span><span class="i-code">0xe801</span>
+        </div>
+        <div class="span3" title="Code: 0xe802">
+          <i class="demo-icon ts-icon-blog-post">&#xe802;</i> <span class="i-name">ts-icon-blog-post</span><span class="i-code">0xe802</span>
+        </div>
+        <div class="span3" title="Code: 0xe803">
+          <i class="demo-icon ts-icon-book-open">&#xe803;</i> <span class="i-name">ts-icon-book-open</span><span class="i-code">0xe803</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe804">
+          <i class="demo-icon ts-icon-collapse">&#xe804;</i> <span class="i-name">ts-icon-collapse</span><span class="i-code">0xe804</span>
+        </div>
+        <div class="span3" title="Code: 0xe805">
+          <i class="demo-icon ts-icon-clock-reset">&#xe805;</i> <span class="i-name">ts-icon-clock-reset</span><span class="i-code">0xe805</span>
+        </div>
+        <div class="span3" title="Code: 0xe806">
+          <i class="demo-icon ts-icon-flash">&#xe806;</i> <span class="i-name">ts-icon-flash</span><span class="i-code">0xe806</span>
+        </div>
+        <div class="span3" title="Code: 0xe807">
+          <i class="demo-icon ts-icon-coin-stack">&#xe807;</i> <span class="i-name">ts-icon-coin-stack</span><span class="i-code">0xe807</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe808">
+          <i class="demo-icon ts-icon-flash-cash">&#xe808;</i> <span class="i-name">ts-icon-flash-cash</span><span class="i-code">0xe808</span>
+        </div>
+        <div class="span3" title="Code: 0xe809">
+          <i class="demo-icon ts-icon-compass">&#xe809;</i> <span class="i-name">ts-icon-compass</span><span class="i-code">0xe809</span>
+        </div>
+        <div class="span3" title="Code: 0xe80a">
+          <i class="demo-icon ts-icon-envelope-alt">&#xe80a;</i> <span class="i-name">ts-icon-envelope-alt</span><span class="i-code">0xe80a</span>
+        </div>
+        <div class="span3" title="Code: 0xe80b">
+          <i class="demo-icon ts-icon-envelope">&#xe80b;</i> <span class="i-name">ts-icon-envelope</span><span class="i-code">0xe80b</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe80c">
+          <i class="demo-icon ts-icon-date">&#xe80c;</i> <span class="i-name">ts-icon-date</span><span class="i-code">0xe80c</span>
+        </div>
+        <div class="span3" title="Code: 0xe80d">
+          <i class="demo-icon ts-icon-chats">&#xe80d;</i> <span class="i-name">ts-icon-chats</span><span class="i-code">0xe80d</span>
+        </div>
+        <div class="span3" title="Code: 0xe80e">
+          <i class="demo-icon ts-icon-book-closed">&#xe80e;</i> <span class="i-name">ts-icon-book-closed</span><span class="i-code">0xe80e</span>
+        </div>
+        <div class="span3" title="Code: 0xe80f">
+          <i class="demo-icon ts-icon-cash-bill">&#xe80f;</i> <span class="i-name">ts-icon-cash-bill</span><span class="i-code">0xe80f</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe810">
+          <i class="demo-icon ts-icon-discord">&#xe810;</i> <span class="i-name">ts-icon-discord</span><span class="i-code">0xe810</span>
+        </div>
+        <div class="span3" title="Code: 0xe811">
+          <i class="demo-icon ts-icon-columns">&#xe811;</i> <span class="i-name">ts-icon-columns</span><span class="i-code">0xe811</span>
+        </div>
+        <div class="span3" title="Code: 0xe812">
+          <i class="demo-icon ts-icon-intersect">&#xe812;</i> <span class="i-name">ts-icon-intersect</span><span class="i-code">0xe812</span>
+        </div>
+        <div class="span3" title="Code: 0xe813">
+          <i class="demo-icon ts-icon-lock">&#xe813;</i> <span class="i-name">ts-icon-lock</span><span class="i-code">0xe813</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe814">
+          <i class="demo-icon ts-icon-meter">&#xe814;</i> <span class="i-name">ts-icon-meter</span><span class="i-code">0xe814</span>
+        </div>
+        <div class="span3" title="Code: 0xe815">
+          <i class="demo-icon ts-icon-calander-30">&#xe815;</i> <span class="i-name">ts-icon-calander-30</span><span class="i-code">0xe815</span>
+        </div>
+        <div class="span3" title="Code: 0xe816">
+          <i class="demo-icon ts-icon-medal">&#xe816;</i> <span class="i-name">ts-icon-medal</span><span class="i-code">0xe816</span>
+        </div>
+        <div class="span3" title="Code: 0xe817">
+          <i class="demo-icon ts-icon-key">&#xe817;</i> <span class="i-name">ts-icon-key</span><span class="i-code">0xe817</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe818">
+          <i class="demo-icon ts-icon-office">&#xe818;</i> <span class="i-name">ts-icon-office</span><span class="i-code">0xe818</span>
+        </div>
+        <div class="span3" title="Code: 0xe819">
+          <i class="demo-icon ts-icon-heart">&#xe819;</i> <span class="i-name">ts-icon-heart</span><span class="i-code">0xe819</span>
+        </div>
+        <div class="span3" title="Code: 0xe81a">
+          <i class="demo-icon ts-icon-flash-box">&#xe81a;</i> <span class="i-name">ts-icon-flash-box</span><span class="i-code">0xe81a</span>
+        </div>
+        <div class="span3" title="Code: 0xe81b">
+          <i class="demo-icon ts-icon-numero-2">&#xe81b;</i> <span class="i-name">ts-icon-numero-2</span><span class="i-code">0xe81b</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe81c">
+          <i class="demo-icon ts-icon-cash-shield">&#xe81c;</i> <span class="i-name">ts-icon-cash-shield</span><span class="i-code">0xe81c</span>
+        </div>
+        <div class="span3" title="Code: 0xe81d">
+          <i class="demo-icon ts-icon-happy-chat">&#xe81d;</i> <span class="i-name">ts-icon-happy-chat</span><span class="i-code">0xe81d</span>
+        </div>
+        <div class="span3" title="Code: 0xe81e">
+          <i class="demo-icon ts-icon-reset">&#xe81e;</i> <span class="i-name">ts-icon-reset</span><span class="i-code">0xe81e</span>
+        </div>
+        <div class="span3" title="Code: 0xe81f">
+          <i class="demo-icon ts-icon-flash-forward">&#xe81f;</i> <span class="i-name">ts-icon-flash-forward</span><span class="i-code">0xe81f</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe820">
+          <i class="demo-icon ts-icon-question-chat">&#xe820;</i> <span class="i-name">ts-icon-question-chat</span><span class="i-code">0xe820</span>
+        </div>
+        <div class="span3" title="Code: 0xe821">
+          <i class="demo-icon ts-icon-question">&#xe821;</i> <span class="i-name">ts-icon-question</span><span class="i-code">0xe821</span>
+        </div>
+        <div class="span3" title="Code: 0xe822">
+          <i class="demo-icon ts-icon-profile">&#xe822;</i> <span class="i-name">ts-icon-profile</span><span class="i-code">0xe822</span>
+        </div>
+        <div class="span3" title="Code: 0xe823">
+          <i class="demo-icon ts-icon-target">&#xe823;</i> <span class="i-name">ts-icon-target</span><span class="i-code">0xe823</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe824">
+          <i class="demo-icon ts-icon-calander-1">&#xe824;</i> <span class="i-name">ts-icon-calander-1</span><span class="i-code">0xe824</span>
+        </div>
+        <div class="span3" title="Code: 0xe825">
+          <i class="demo-icon ts-icon-glass-cash">&#xe825;</i> <span class="i-name">ts-icon-glass-cash</span><span class="i-code">0xe825</span>
+        </div>
+        <div class="span3" title="Code: 0xe826">
+          <i class="demo-icon ts-icon-reversal">&#xe826;</i> <span class="i-name">ts-icon-reversal</span><span class="i-code">0xe826</span>
+        </div>
+        <div class="span3" title="Code: 0xe827">
+          <i class="demo-icon ts-icon-expand">&#xe827;</i> <span class="i-name">ts-icon-expand</span><span class="i-code">0xe827</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe828">
+          <i class="demo-icon ts-icon-meter-alt">&#xe828;</i> <span class="i-name">ts-icon-meter-alt</span><span class="i-code">0xe828</span>
+        </div>
+        <div class="span3" title="Code: 0xe829">
+          <i class="demo-icon ts-icon-numero-3">&#xe829;</i> <span class="i-name">ts-icon-numero-3</span><span class="i-code">0xe829</span>
+        </div>
+        <div class="span3" title="Code: 0xe82a">
+          <i class="demo-icon ts-icon-numero-4">&#xe82a;</i> <span class="i-name">ts-icon-numero-4</span><span class="i-code">0xe82a</span>
+        </div>
+        <div class="span3" title="Code: 0xe82b">
+          <i class="demo-icon ts-icon-numero-1">&#xe82b;</i> <span class="i-name">ts-icon-numero-1</span><span class="i-code">0xe82b</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe82c">
+          <i class="demo-icon ts-icon-recycle">&#xe82c;</i> <span class="i-name">ts-icon-recycle</span><span class="i-code">0xe82c</span>
+        </div>
+        <div class="span3" title="Code: 0xe82d">
+          <i class="demo-icon ts-icon-phone">&#xe82d;</i> <span class="i-name">ts-icon-phone</span><span class="i-code">0xe82d</span>
+        </div>
+        <div class="span3" title="Code: 0xe82e">
+          <i class="demo-icon ts-icon-trnd-line">&#xe82e;</i> <span class="i-name">ts-icon-trnd-line</span><span class="i-code">0xe82e</span>
+        </div>
+        <div class="span3" title="Code: 0xe82f">
+          <i class="demo-icon ts-icon-youtube">&#xe82f;</i> <span class="i-name">ts-icon-youtube</span><span class="i-code">0xe82f</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe830">
+          <i class="demo-icon ts-icon-speedometer">&#xe830;</i> <span class="i-name">ts-icon-speedometer</span><span class="i-code">0xe830</span>
+        </div>
+        <div class="span3" title="Code: 0xe831">
+          <i class="demo-icon ts-icon-stopwatch">&#xe831;</i> <span class="i-name">ts-icon-stopwatch</span><span class="i-code">0xe831</span>
+        </div>
+        <div class="span3" title="Code: 0xe832">
+          <i class="demo-icon ts-icon-x">&#xe832;</i> <span class="i-name">ts-icon-x</span><span class="i-code">0xe832</span>
+        </div>
+        <div class="span3" title="Code: 0xe833">
+          <i class="demo-icon ts-icon-trend-box">&#xe833;</i> <span class="i-name">ts-icon-trend-box</span><span class="i-code">0xe833</span>
+        </div>
+      </div>
+    </div>
+      <div class="container small-icons">
+      <div class="row">
+        <h2>Small</h2>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe834">
+          <i class="demo-icon ts-icon-ai_sm">&#xe834;</i> <span class="i-name">ts-icon-ai_sm</span><span class="i-code">0xe834</span>
+        </div>
+        <div class="span3" title="Code: 0xe835">
+          <i class="demo-icon ts-icon-article_sm">&#xe835;</i> <span class="i-name">ts-icon-article_sm</span><span class="i-code">0xe835</span>
+        </div>
+        <div class="span3" title="Code: 0xe836">
+          <i class="demo-icon ts-icon-bank_sm">&#xe836;</i> <span class="i-name">ts-icon-bank_sm</span><span class="i-code">0xe836</span>
+        </div>
+        <div class="span3" title="Code: 0xe837">
+          <i class="demo-icon ts-icon-bank-alt_sm">&#xe837;</i> <span class="i-name">ts-icon-bank-alt_sm</span><span class="i-code">0xe837</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe838">
+          <i class="demo-icon ts-icon-book-open_sm">&#xe838;</i> <span class="i-name">ts-icon-book-open_sm</span><span class="i-code">0xe838</span>
+        </div>
+        <div class="span3" title="Code: 0xe839">
+          <i class="demo-icon ts-icon-calander_sm">&#xe839;</i> <span class="i-name">ts-icon-calander_sm</span><span class="i-code">0xe839</span>
+        </div>
+        <div class="span3" title="Code: 0xe83a">
+          <i class="demo-icon ts-icon-coin_sm">&#xe83a;</i> <span class="i-name">ts-icon-coin_sm</span><span class="i-code">0xe83a</span>
+        </div>
+        <div class="span3" title="Code: 0xe83b">
+          <i class="demo-icon ts-icon-chats_sm">&#xe83b;</i> <span class="i-name">ts-icon-chats_sm</span><span class="i-code">0xe83b</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe83c">
+          <i class="demo-icon ts-icon-comments-alt_sm">&#xe83c;</i> <span class="i-name">ts-icon-comments-alt_sm</span><span class="i-code">0xe83c</span>
+        </div>
+        <div class="span3" title="Code: 0xe83d">
+          <i class="demo-icon ts-icon-cycle_sm">&#xe83d;</i> <span class="i-name">ts-icon-cycle_sm</span><span class="i-code">0xe83d</span>
+        </div>
+        <div class="span3" title="Code: 0xe83e">
+          <i class="demo-icon ts-icon-cash-shield_sm">&#xe83e;</i> <span class="i-name">ts-icon-cash-shield_sm</span><span class="i-code">0xe83e</span>
+        </div>
+        <div class="span3" title="Code: 0xe83f">
+          <i class="demo-icon ts-icon-blog-post_sm">&#xe83f;</i> <span class="i-name">ts-icon-blog-post_sm</span><span class="i-code">0xe83f</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe840">
+          <i class="demo-icon ts-icon-coin-stack_sm">&#xe840;</i> <span class="i-name">ts-icon-coin-stack_sm</span><span class="i-code">0xe840</span>
+        </div>
+        <div class="span3" title="Code: 0xe841">
+          <i class="demo-icon ts-icon-discord_sm">&#xe841;</i> <span class="i-name">ts-icon-discord_sm</span><span class="i-code">0xe841</span>
+        </div>
+        <div class="span3" title="Code: 0xe842">
+          <i class="demo-icon ts-icon-columns_sm">&#xe842;</i> <span class="i-name">ts-icon-columns_sm</span><span class="i-code">0xe842</span>
+        </div>
+        <div class="span3" title="Code: 0xe843">
+          <i class="demo-icon ts-icon-envelope_sm">&#xe843;</i> <span class="i-name">ts-icon-envelope_sm</span><span class="i-code">0xe843</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe844">
+          <i class="demo-icon ts-icon-book-closed_sm">&#xe844;</i> <span class="i-name">ts-icon-book-closed_sm</span><span class="i-code">0xe844</span>
+        </div>
+        <div class="span3" title="Code: 0xe845">
+          <i class="demo-icon ts-icon-collapse_sm">&#xe845;</i> <span class="i-name">ts-icon-collapse_sm</span><span class="i-code">0xe845</span>
+        </div>
+        <div class="span3" title="Code: 0xe846">
+          <i class="demo-icon ts-icon-cash-bill_sm">&#xe846;</i> <span class="i-name">ts-icon-cash-bill_sm</span><span class="i-code">0xe846</span>
+        </div>
+        <div class="span3" title="Code: 0xe847">
+          <i class="demo-icon ts-icon-flash_sm">&#xe847;</i> <span class="i-name">ts-icon-flash_sm</span><span class="i-code">0xe847</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe848">
+          <i class="demo-icon ts-icon-compass_sm">&#xe848;</i> <span class="i-name">ts-icon-compass_sm</span><span class="i-code">0xe848</span>
+        </div>
+        <div class="span3" title="Code: 0xe849">
+          <i class="demo-icon ts-icon-question_sm">&#xe849;</i> <span class="i-name">ts-icon-question_sm</span><span class="i-code">0xe849</span>
+        </div>
+        <div class="span3" title="Code: 0xe84a">
+          <i class="demo-icon ts-icon-key_sm">&#xe84a;</i> <span class="i-name">ts-icon-key_sm</span><span class="i-code">0xe84a</span>
+        </div>
+        <div class="span3" title="Code: 0xe84b">
+          <i class="demo-icon ts-icon-happy-chat_sm">&#xe84b;</i> <span class="i-name">ts-icon-happy-chat_sm</span><span class="i-code">0xe84b</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe84c">
+          <i class="demo-icon ts-icon-lock_sm">&#xe84c;</i> <span class="i-name">ts-icon-lock_sm</span><span class="i-code">0xe84c</span>
+        </div>
+        <div class="span3" title="Code: 0xe84d">
+          <i class="demo-icon ts-icon-intersect_sm">&#xe84d;</i> <span class="i-name">ts-icon-intersect_sm</span><span class="i-code">0xe84d</span>
+        </div>
+        <div class="span3" title="Code: 0xe84e">
+          <i class="demo-icon ts-icon-heart_sm">&#xe84e;</i> <span class="i-name">ts-icon-heart_sm</span><span class="i-code">0xe84e</span>
+        </div>
+        <div class="span3" title="Code: 0xe84f">
+          <i class="demo-icon ts-icon-flash-box_sm">&#xe84f;</i> <span class="i-name">ts-icon-flash-box_sm</span><span class="i-code">0xe84f</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe850">
+          <i class="demo-icon ts-icon-envelope-alt_sm">&#xe850;</i> <span class="i-name">ts-icon-envelope-alt_sm</span><span class="i-code">0xe850</span>
+        </div>
+        <div class="span3" title="Code: 0xe851">
+          <i class="demo-icon ts-icon-flash-forward_sm">&#xe851;</i> <span class="i-name">ts-icon-flash-forward_sm</span><span class="i-code">0xe851</span>
+        </div>
+        <div class="span3" title="Code: 0xe852">
+          <i class="demo-icon ts-icon-meter_sm">&#xe852;</i> <span class="i-name">ts-icon-meter_sm</span><span class="i-code">0xe852</span>
+        </div>
+        <div class="span3" title="Code: 0xe853">
+          <i class="demo-icon ts-icon-expand_sm">&#xe853;</i> <span class="i-name">ts-icon-expand_sm</span><span class="i-code">0xe853</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe854">
+          <i class="demo-icon ts-icon-reversal_sm">&#xe854;</i> <span class="i-name">ts-icon-reversal_sm</span><span class="i-code">0xe854</span>
+        </div>
+        <div class="span3" title="Code: 0xe855">
+          <i class="demo-icon ts-icon-medal_sm">&#xe855;</i> <span class="i-name">ts-icon-medal_sm</span><span class="i-code">0xe855</span>
+        </div>
+        <div class="span3" title="Code: 0xe856">
+          <i class="demo-icon ts-icon-office_sm">&#xe856;</i> <span class="i-name">ts-icon-office_sm</span><span class="i-code">0xe856</span>
+        </div>
+        <div class="span3" title="Code: 0xe857">
+          <i class="demo-icon ts-icon-calander-1_sm">&#xe857;</i> <span class="i-name">ts-icon-calander-1_sm</span><span class="i-code">0xe857</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe858">
+          <i class="demo-icon ts-icon-cash_sm">&#xe858;</i> <span class="i-name">ts-icon-cash_sm</span><span class="i-code">0xe858</span>
+        </div>
+        <div class="span3" title="Code: 0xe859">
+          <i class="demo-icon ts-icon-phone_sm">&#xe859;</i> <span class="i-name">ts-icon-phone_sm</span><span class="i-code">0xe859</span>
+        </div>
+        <div class="span3" title="Code: 0xe85a">
+          <i class="demo-icon ts-icon-date_sm">&#xe85a;</i> <span class="i-name">ts-icon-date_sm</span><span class="i-code">0xe85a</span>
+        </div>
+        <div class="span3" title="Code: 0xe85b">
+          <i class="demo-icon ts-icon-speedometer_sm">&#xe85b;</i> <span class="i-name">ts-icon-speedometer_sm</span><span class="i-code">0xe85b</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe85c">
+          <i class="demo-icon ts-icon-stopwatch_sm">&#xe85c;</i> <span class="i-name">ts-icon-stopwatch_sm</span><span class="i-code">0xe85c</span>
+        </div>
+        <div class="span3" title="Code: 0xe85d">
+          <i class="demo-icon ts-icon-meter-alt_sm">&#xe85d;</i> <span class="i-name">ts-icon-meter-alt_sm</span><span class="i-code">0xe85d</span>
+        </div>
+        <div class="span3" title="Code: 0xe85e">
+          <i class="demo-icon ts-icon-rewind_sm">&#xe85e;</i> <span class="i-name">ts-icon-rewind_sm</span><span class="i-code">0xe85e</span>
+        </div>
+        <div class="span3" title="Code: 0xe85f">
+          <i class="demo-icon ts-icon-trendline_sm">&#xe85f;</i> <span class="i-name">ts-icon-trendline_sm</span><span class="i-code">0xe85f</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe860">
+          <i class="demo-icon ts-icon-profile_sm">&#xe860;</i> <span class="i-name">ts-icon-profile_sm</span><span class="i-code">0xe860</span>
+        </div>
+        <div class="span3" title="Code: 0xe861">
+          <i class="demo-icon ts-icon-x_sm">&#xe861;</i> <span class="i-name">ts-icon-x_sm</span><span class="i-code">0xe861</span>
+        </div>
+        <div class="span3" title="Code: 0xe862">
+          <i class="demo-icon ts-icon-target_sm">&#xe862;</i> <span class="i-name">ts-icon-target_sm</span><span class="i-code">0xe862</span>
+        </div>
+        <div class="span3" title="Code: 0xe863">
+          <i class="demo-icon ts-icon-youtube_sm">&#xe863;</i> <span class="i-name">ts-icon-youtube_sm</span><span class="i-code">0xe863</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xe864">
+          <i class="demo-icon ts-icon-question-chat_sm">&#xe864;</i> <span class="i-name">ts-icon-question-chat_sm</span><span class="i-code">0xe864</span>
+        </div>
+        <div class="span3" title="Code: 0xe865">
+          <i class="demo-icon ts-icon-trend-chart_sm">&#xe865;</i> <span class="i-name">ts-icon-trend-chart_sm</span><span class="i-code">0xe865</span>
+        </div>
+      </div>
+        
+
+    </div>
+    </div>
+    <a href="../assets/fonts/topstep-iconfont.zip" target="_blank">Download topstep-iconfont.zip</a>
+</article>
+        </main>
+
+      </div>
+    </div>
+
+    <footer class="bg-slate-100 border-t border-slate-200 mt-16 dark:bg-neutral-950 dark:border-neutral-800">
+  <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 justify-items-start gap-8 text-sm text-slate-600 dark:text-neutral-400">
+    
+    <!-- About -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">About</h3>
+      <p>
+        A modern Markdown + Tailwind Jekyll site hosted on Github Pages
+      </p>
+    </div>-->
+
+    <!-- Navigation -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">Navigation</h3>
+      <ul class="space-y-2">
+        
+          <li>
+            <a href="/dev-pages/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              Home
+            </a>
+          </li>
+        
+          <li>
+            <a href="/dev-pages/documents/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              Documents
+            </a>
+          </li>
+        
+          <li>
+            <a href="/dev-pages/about/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              About
+            </a>
+          </li>
+        
+          <li>
+            <a href="/dev-pages/contact/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              Contact
+            </a>
+          </li>
+        
+      </ul>
+    </div>-->
+
+    <!-- Social -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">Connect</h3>
+      <ul class="space-y-2">
+        
+        
+        
+      </ul>
+    </div>
+
+  </div>-->
+
+  <div class="text-center text-xs text-slate-500 dark:text-neutral-500">
+    © <span id="year"></span> Dev-pages. All rights reserved.
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById("theme-toggle");
+      var key = "theme";
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      if (!toggle) return;
+
+      function setTheme(theme, persist) {
+        var dark = theme === "dark";
+        root.classList.toggle("dark", dark);
+        root.setAttribute("data-theme", dark ? "dark" : "light");
+
+        if (persist) {
+          localStorage.setItem(key, dark ? "dark" : "light");
+        }
+
+        //toggle.textContent = dark ? "Light" : "Dark";
+        toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      }
+
+      setTheme(root.classList.contains("dark") ? "dark" : "light", false);
+
+      toggle.addEventListener("click", function () {
+        setTheme(root.classList.contains("dark") ? "light" : "dark", true);
+      });
+    })();
+  </script>
+</footer>
+
+
+  </body>
+</html>
