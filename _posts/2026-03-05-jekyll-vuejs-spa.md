@@ -1,10 +1,9 @@
-# Vue.js + Jekyll Overview (Hybrid Static + SPA)
 ---
 layout: post
 title: "Jekyll + Vuejs SPA"
 ---
 
-# Using Vue js with Jekyll to create a static-CMS SPA
+# Vue.js + Jekyll Overview (Hybrid Static + SPA)
 
 
 This approach lets you keep **Jekyll** as your static-site generator (posts, pages, layouts) while adding a **Vue 3 single-page app (SPA)** that lives at a dedicated path (e.g. `/app/`) and can consume Jekyll-generated content via JSON. You get:
