@@ -22,7 +22,7 @@
   <!-- Title -->
   <title>
     
-      About | Dev-pages
+      Jekyll Vuejs Spa | Dev-pages
     
   </title>
 
@@ -58,7 +58,7 @@
           <a 
             href="/dev-pages/about/"
             class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
-            font-semibold text-slate-900 bg-slate-100 border-slate-200 dark:text-neutral-100 dark:bg-neutral-800 dark:border-neutral-700">
+            ">
             About
           </a>
         
@@ -111,7 +111,7 @@
         <a 
           href="/dev-pages/docs/jekyll-vuejs-spa/"
           class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
-          ">
+          underline text-slate-900 dark:text-neutral-100">
           Jekyll Vuejs Spa
         </a>
       </li>
@@ -190,11 +190,213 @@
 
         <!-- Main Content -->
         <main class="md:col-span-3 h-full article">
-          <article>
-  <h1>About</h1>
-  <p>This is the about page.</p>
+          <article class="prose prose-lg max-w-none prose-slate dark:prose-invert dark:prose-headings:text-neutral-100 dark:prose-p:text-neutral-200 dark:prose-strong:text-neutral-100 dark:prose-a:text-sky-400 dark:hover:prose-a:text-sky-300 dark:prose-code:text-neutral-100 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-100">
+  <h1>Jekyll Vuejs Spa</h1>
+  <p class="text-slate-500 text-sm dark:text-neutral-400 mb-8">
+    March 05, 2026
+  </p>
+
+  <h1 id="vuejs--jekyll-overview-hybrid-static--spa">Vue.js + Jekyll Overview (Hybrid Static + SPA)</h1>
+<hr />
+<p>layout: post
+title: “Jekyll + Vuejs SPA”
+—</p>
+
+<h1 id="using-vue-js-with-jekyll-to-create-a-static-cms-spa">Using Vue js with Jekyll to create a static-CMS SPA</h1>
+
+<p>This approach lets you keep <strong>Jekyll</strong> as your static-site generator (posts, pages, layouts) while adding a <strong>Vue 3 single-page app (SPA)</strong> that lives at a dedicated path (e.g. <code class="language-plaintext highlighter-rouge">/app/</code>) and can consume Jekyll-generated content via JSON. You get:</p>
+
+<ul>
+  <li><strong>Static Jekyll routes</strong> (SEO-friendly, normal page loads):<br />
+<code class="language-plaintext highlighter-rouge">/dev-pages/docs/my-post/</code></li>
+  <li><strong>SPA Vue routes</strong> (dynamic UI, client routing):<br />
+<code class="language-plaintext highlighter-rouge">/dev-pages/app/#/post/my-post</code></li>
+</ul>
+
+<p>The key is to use <strong>hash routing</strong> in Vue (<code class="language-plaintext highlighter-rouge">#/...</code>) so it works on static hosting (GitHub Pages) without server rewrites.</p>
+
+<hr />
+
+<h2 id="architecture-options">Architecture Options</h2>
+
+<h3 id="1-hybrid-recommended">1) Hybrid (Recommended)</h3>
+<ul>
+  <li>Jekyll renders the main site + canonical content pages.</li>
+  <li>Vue SPA is mounted on a single Jekyll page (<code class="language-plaintext highlighter-rouge">/app/</code>).</li>
+  <li>Vue fetches content from a Jekyll-generated JSON feed (<code class="language-plaintext highlighter-rouge">/posts.json</code>).</li>
+</ul>
+
+<p>✅ Best for: “Both static pages AND a true SPA in the same repo.”</p>
+
+<h3 id="2-vue-enhanced-jekyll-not-a-full-spa">2) Vue-enhanced Jekyll (Not a full SPA)</h3>
+<ul>
+  <li>Keep all routes as Jekyll pages.</li>
+  <li>Use Vue only for components/widgets inside pages.</li>
+</ul>
+
+<p>✅ Best for: interactive UI without client routing.</p>
+
+<hr />
+
+<h2 id="successful-process-brief-outline">Successful Process (Brief Outline)</h2>
+
+<h3 id="1-configure-jekyll-paths">1) Configure Jekyll paths</h3>
+<ul>
+  <li>Set <code class="language-plaintext highlighter-rouge">baseurl</code> for GitHub Pages project sites (example):
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">baseurl: "/dev-pages"</code></li>
+    </ul>
+  </li>
+  <li>Set permalinks for post URLs (example):
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">permalink: /docs/:title/</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-add-a-spa-host-page-in-jekyll">2) Add a SPA host page in Jekyll</h3>
+<p>Create <code class="language-plaintext highlighter-rouge">/app/</code> as a real Jekyll page that mounts Vue:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">app/index.html</code> → permalink <code class="language-plaintext highlighter-rouge">/app/</code></li>
+  <li>Contains <code class="language-plaintext highlighter-rouge">&lt;div id="app"&gt;&lt;/div&gt;</code></li>
+  <li>Loads the Vue entry module: <code class="language-plaintext highlighter-rouge">assets/app/main.js</code></li>
+</ul>
+
+<p>Result:</p>
+<ul>
+  <li>Visiting <code class="language-plaintext highlighter-rouge">/dev-pages/app/</code> returns real HTML (Jekyll layout + SPA mount point)</li>
+</ul>
+
+<h3 id="3-export-jekyll-content-as-json-for-vue">3) Export Jekyll content as JSON for Vue</h3>
+<p>Generate a JSON feed from <code class="language-plaintext highlighter-rouge">_posts</code> so the SPA can fetch content:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">posts.json</code> with:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">date</code>, <code class="language-plaintext highlighter-rouge">slug</code>, <code class="language-plaintext highlighter-rouge">url</code>, <code class="language-plaintext highlighter-rouge">content</code>, etc.</li>
+    </ul>
+  </li>
+  <li>Use <code class="language-plaintext highlighter-rouge">relative_url</code> so Jekyll automatically prefixes <code class="language-plaintext highlighter-rouge">baseurl</code></li>
+</ul>
+
+<p>Result:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">/dev-pages/posts.json</code> becomes the SPA’s content API.</li>
+</ul>
+
+<h3 id="4-use-vue-3--vue-router-with-hash-routing">4) Use Vue 3 + Vue Router with hash routing</h3>
+<p>Inside <code class="language-plaintext highlighter-rouge">assets/app/main.js</code>:</p>
+<ul>
+  <li>Use Vue Router with <code class="language-plaintext highlighter-rouge">createWebHashHistory()</code></li>
+  <li>Define routes like:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">/</code> (SPA home)</li>
+      <li><code class="language-plaintext highlighter-rouge">/post/:slug</code> (SPA post view)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Result:</p>
+<ul>
+  <li>SPA routes look like <code class="language-plaintext highlighter-rouge">/dev-pages/app/#/post/my-post</code></li>
+  <li>No server rewrite rules required.</li>
+</ul>
+
+<h3 id="5-handle-baseurl-correctly-critical">5) Handle baseurl correctly (critical)</h3>
+<p>Ensure fetch calls and static links include the base path:</p>
+
+<ul>
+  <li>Provide baseurl to JS via a global (e.g. <code class="language-plaintext highlighter-rouge">window.__BASEURL__ = "/dev-pages"</code>)</li>
+  <li>Fetch JSON using:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">${BASE}/posts.json</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Result:</p>
+<ul>
+  <li>Works the same locally and on GitHub Pages project sites.</li>
+</ul>
+
+<h3 id="6-use-import-maps-or-cdn-esm-to-avoid-bundlers-optional-but-common">6) Use import maps or CDN ESM to avoid bundlers (optional but common)</h3>
+<p>If you are not using Vite:</p>
+<ul>
+  <li>Use an <code class="language-plaintext highlighter-rouge">importmap</code> in <code class="language-plaintext highlighter-rouge">app/index.html</code> for:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">vue</code></li>
+      <li><code class="language-plaintext highlighter-rouge">vue-router</code></li>
+    </ul>
+  </li>
+  <li>Prefer a browser-ready Vue build:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">vue.esm-browser.js</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Result:</p>
+<ul>
+  <li>No Node build step required; the browser can load modules directly.</li>
+</ul>
+
+<h3 id="7-render-posts-in-vue-from-the-json-feed">7) Render posts in Vue from the JSON feed</h3>
+<p>In the SPA:</p>
+<ul>
+  <li>Home view fetches <code class="language-plaintext highlighter-rouge">posts.json</code> and lists items</li>
+  <li>Post view matches <code class="language-plaintext highlighter-rouge">:slug</code>, finds the post, and renders:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">v-html="post.content"</code> (Jekyll already converted Markdown → HTML)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Result:</p>
+<ul>
+  <li>SPA shows the same content as Jekyll’s static pages, but with dynamic routing/UI.</li>
+</ul>
+
+<hr />
+
+<h2 id="resulting-url-behavior">Resulting URL Behavior</h2>
+
+<h3 id="static-jekyll">Static (Jekyll)</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">/dev-pages/docs/my-post/</code> → full HTML page rendered by Jekyll</li>
+</ul>
+
+<h3 id="spa-vue">SPA (Vue)</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">/dev-pages/app/#/post/my-post</code> → Vue renders content client-side</li>
+</ul>
+
+<p>These coexist cleanly because:</p>
+<ul>
+  <li>Jekyll owns <code class="language-plaintext highlighter-rouge">/docs/...</code></li>
+  <li>Vue owns hash routes under <code class="language-plaintext highlighter-rouge">/app/</code></li>
+</ul>
+
+<hr />
+
+<h2 id="recommended-next-steps">Recommended Next Steps</h2>
+<ul>
+  <li>Add a second feed for metadata-only lists (faster load)</li>
+  <li>Add client-side search (index posts at build time)</li>
+  <li>Add a shared “canonical link”:
+    <ul>
+      <li>SPA page links back to the static Jekyll URL (<code class="language-plaintext highlighter-rouge">post.url</code>)</li>
+    </ul>
+  </li>
+  <li>If the SPA grows, consider switching to Vite for:
+    <ul>
+      <li>bundling, smaller payloads, better DX</li>
+    </ul>
+  </li>
+</ul>
 
 </article>
+
         </main>
 
       </div>

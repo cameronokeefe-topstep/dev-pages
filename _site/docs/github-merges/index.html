@@ -22,7 +22,7 @@
   <!-- Title -->
   <title>
     
-      About | Dev-pages
+      Github Merges | Dev-pages
     
   </title>
 
@@ -58,7 +58,7 @@
           <a 
             href="/dev-pages/about/"
             class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
-            font-semibold text-slate-900 bg-slate-100 border-slate-200 dark:text-neutral-100 dark:bg-neutral-800 dark:border-neutral-700">
+            ">
             About
           </a>
         
@@ -120,7 +120,7 @@
         <a 
           href="/dev-pages/docs/github-merges/"
           class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
-          ">
+          underline text-slate-900 dark:text-neutral-100">
           Github Merges
         </a>
       </li>
@@ -190,11 +190,100 @@
 
         <!-- Main Content -->
         <main class="md:col-span-3 h-full article">
-          <article>
-  <h1>About</h1>
-  <p>This is the about page.</p>
+          <article class="prose prose-lg max-w-none prose-slate dark:prose-invert dark:prose-headings:text-neutral-100 dark:prose-p:text-neutral-200 dark:prose-strong:text-neutral-100 dark:prose-a:text-sky-400 dark:hover:prose-a:text-sky-300 dark:prose-code:text-neutral-100 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-100">
+  <h1>Github Merges</h1>
+  <p class="text-slate-500 text-sm dark:text-neutral-400 mb-8">
+    March 03, 2026
+  </p>
+
+  <p><a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github">https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github</a></p>
+
+<h1 id="adding-a-commit-message-when-using-git-merge">Adding a Commit Message When Using <code class="language-plaintext highlighter-rouge">git merge</code></h1>
+
+<hr />
+
+<h2 id="-basic-syntax">✅ Basic Syntax</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge branch-name <span class="nt">-m</span> <span class="s2">"Merge branch-name into dev"</span>
+</code></pre></div></div>
+
+<p>This command:</p>
+
+<ul>
+  <li>Performs the merge</li>
+  <li>Uses your provided commit message</li>
+  <li>Skips opening the default editor (like Vim)</li>
+</ul>
+
+<hr />
+
+<h2 id="-multi-line-commit-message">📝 Multi-line Commit Message</h2>
+
+<p>You can include a commit body by stacking multiple <code class="language-plaintext highlighter-rouge">-m</code> flags:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge branch-name <span class="se">\</span>
+  <span class="nt">-m</span> <span class="s2">"Merge branch-name into dev"</span> <span class="se">\</span>
+  <span class="nt">-m</span> <span class="s2">"Adds new banner component, styles, and CMS schema updates."</span>
+</code></pre></div></div>
+
+<ul>
+  <li>The first <code class="language-plaintext highlighter-rouge">-m</code> becomes the <strong>commit title</strong></li>
+  <li>The second <code class="language-plaintext highlighter-rouge">-m</code> becomes the <strong>commit body</strong></li>
+</ul>
+
+<hr />
+
+<h2 id="-important-notes">⚠ Important Notes</h2>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">-m</code> flag only applies if Git creates a <strong>merge commit</strong>.</li>
+  <li>If the merge is a <strong>fast-forward</strong>, Git will not create a merge commit — so no message will be used.</li>
+</ul>
+
+<p>If you want to <strong>force a merge commit</strong> (even when fast-forward is possible), use:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge <span class="nt">--no-ff</span> branch-name <span class="nt">-m</span> <span class="s2">"Merge branch-name into dev"</span>
+</code></pre></div></div>
+
+<h3 id="why-use---no-ff">Why use <code class="language-plaintext highlighter-rouge">--no-ff</code>?</h3>
+
+<ul>
+  <li>Preserves branch history</li>
+  <li>Makes feature merges clearly visible in the commit log</li>
+  <li>Cleaner for release tracking</li>
+  <li>Common in team workflows</li>
+</ul>
+
+<hr />
+
+<h2 id="-example-standard-team-workflow">🚀 Example: Standard Team Workflow</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout dev
+git pull origin dev
+git merge <span class="nt">--no-ff</span> branch-name <span class="nt">-m</span> <span class="s2">"Merge branch-name into dev"</span>
+git push origin dev
+</code></pre></div></div>
+
+<p>This ensures:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">dev</code> is up to date</li>
+  <li>The merge creates a visible merge commit</li>
+  <li>The updated branch is pushed to remote</li>
+</ol>
+
+<hr />
+
+<p>If you’d like, you can also explore:</p>
+
+<ul>
+  <li>Using <code class="language-plaintext highlighter-rouge">--squash</code> merges</li>
+  <li>Rebasing instead of merging</li>
+  <li>Best practices for CI/CD pipelines</li>
+</ul>
 
 </article>
+
         </main>
 
       </div>

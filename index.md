@@ -5,7 +5,7 @@ title: Home
 <h1 class="text-3xl font-bold">{{ site.title }}</h1>
 <p>{{ site.description }}</p>
 
-<h2>Latest documents (posts)</h2>
+<h2>Latest docs (posts)</h2>
 <ul>
   {% for post in site.posts limit:5 %}
     <li>

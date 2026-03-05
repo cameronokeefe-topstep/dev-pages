@@ -1,285 +1,202 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/dev-pages/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/dev-pages/" rel="alternate" type="text/html" /><updated>2026-03-05T11:27:45-06:00</updated><id>http://localhost:4000/dev-pages/feed.xml</id><title type="html">Dev-pages</title><subtitle>A modern Markdown + Tailwind, Jekyll site hosted on Github Pages</subtitle><entry><title type="html">Jekyll Vuejs Spa</title><link href="http://localhost:4000/dev-pages/docs/jekyll-vuejs-spa/" rel="alternate" type="text/html" title="Jekyll Vuejs Spa" /><published>2026-03-05T00:00:00-06:00</published><updated>2026-03-05T00:00:00-06:00</updated><id>http://localhost:4000/dev-pages/docs/jekyll-vuejs-spa</id><content type="html" xml:base="http://localhost:4000/dev-pages/docs/jekyll-vuejs-spa/"><![CDATA[<h1 id="vuejs--jekyll-overview-hybrid-static--spa">Vue.js + Jekyll Overview (Hybrid Static + SPA)</h1>
-<hr />
-<p>layout: post
-title: “Jekyll + Vuejs SPA”
-—</p>
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<h1 id="using-vue-js-with-jekyll-to-create-a-static-cms-spa">Using Vue js with Jekyll to create a static-CMS SPA</h1>
+  <!-- Mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow">
 
-<p>This approach lets you keep <strong>Jekyll</strong> as your static-site generator (posts, pages, layouts) while adding a <strong>Vue 3 single-page app (SPA)</strong> that lives at a dedicated path (e.g. <code class="language-plaintext highlighter-rouge">/app/</code>) and can consume Jekyll-generated content via JSON. You get:</p>
+  <!-- Prevent flash and apply stored/system theme before paint -->
+  <script>
+    (function () {
+      var key = "theme";
+      var stored = localStorage.getItem(key);
+      var isDark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.classList.toggle("dark", isDark);
+      document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+    })();
+  </script>
 
-<ul>
-  <li><strong>Static Jekyll routes</strong> (SEO-friendly, normal page loads):<br />
-<code class="language-plaintext highlighter-rouge">/dev-pages/docs/my-post/</code></li>
-  <li><strong>SPA Vue routes</strong> (dynamic UI, client routing):<br />
-<code class="language-plaintext highlighter-rouge">/dev-pages/app/#/post/my-post</code></li>
-</ul>
+  <!-- Title -->
+  <title>
+    
+      Jekyll | Dev-pages
+    
+  </title>
 
-<p>The key is to use <strong>hash routing</strong> in Vue (<code class="language-plaintext highlighter-rouge">#/...</code>) so it works on static hosting (GitHub Pages) without server rewrites.</p>
+  <link rel="stylesheet" href="/dev-pages/assets/css/tailwind.css">
+</head>
 
-<hr />
+  <body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 transition-colors dark:bg-neutral-950 dark:text-neutral-100">
 
-<h2 id="architecture-options">Architecture Options</h2>
+    <header class="bg-white/95 border-b border-slate-200 backdrop-blur dark:bg-neutral-900/95 dark:border-neutral-800">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center gap-4">
+    
+    <a href="/dev-pages/" class="text-2xl font-bold text-slate-900 hover:text-black transition dark:text-neutral-100 dark:hover:text-white">
+      Dev-pages
+    </a>
 
-<h3 id="1-hybrid-recommended">1) Hybrid (Recommended)</h3>
-<ul>
-  <li>Jekyll renders the main site + canonical content pages.</li>
-  <li>Vue SPA is mounted on a single Jekyll page (<code class="language-plaintext highlighter-rouge">/app/</code>).</li>
-  <li>Vue fetches content from a Jekyll-generated JSON feed (<code class="language-plaintext highlighter-rouge">/posts.json</code>).</li>
-</ul>
+    <div class="flex items-center gap-4">
+      <nav class="flex items-center gap-2 text-sm">
+        
+          <a 
+            href="/dev-pages/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            Home
+          </a>
+        
+          <a 
+            href="/dev-pages/app/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            Docs
+          </a>
+        
+          <a 
+            href="/dev-pages/about/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            About
+          </a>
+        
+          <a 
+            href="/dev-pages/contact/"
+            class="inline-flex items-center rounded-md border border-transparent px-3 py-1.5 text-slate-600 transition hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800
+            ">
+            Contact
+          </a>
+        
+      </nav>
 
-<p>✅ Best for: “Both static pages AND a true SPA in the same repo.”</p>
+      <button
+        id="theme-toggle"
+        type="button"
+        class="inline-flex items-center rounded-md border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-800"
+        aria-label="Toggle theme"
+      >
+        <span class="hidden dark:block"><!-- _includes/icon.html -->
 
-<h3 id="2-vue-enhanced-jekyll-not-a-full-spa">2) Vue-enhanced Jekyll (Not a full SPA)</h3>
-<ul>
-  <li>Keep all routes as Jekyll pages.</li>
-  <li>Use Vue only for components/widgets inside pages.</li>
-</ul>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high" viewBox="0 0 16 16">
+  <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+</svg></span>
+        <span class="block dark:hidden"><!-- _includes/icon.html -->
 
-<p>✅ Best for: interactive UI without client routing.</p>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon" viewBox="0 0 16 16">
+  <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
+</svg></span>
+      </button>
+    </div>
 
-<hr />
+  </div>
+</header>
 
-<h2 id="successful-process-brief-outline">Successful Process (Brief Outline)</h2>
 
-<h3 id="1-configure-jekyll-paths">1) Configure Jekyll paths</h3>
-<ul>
-  <li>Set <code class="language-plaintext highlighter-rouge">baseurl</code> for GitHub Pages project sites (example):
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">baseurl: "/dev-pages"</code></li>
-    </ul>
-  </li>
-  <li>Set permalinks for post URLs (example):
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">permalink: /docs/:title/</code></li>
-    </ul>
-  </li>
-</ul>
+    <div class="w-full flex-1 max-w-7xl mx-auto px-4 py-10 flex">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 flex-1 items-stretch">
 
-<h3 id="2-add-a-spa-host-page-in-jekyll">2) Add a SPA host page in Jekyll</h3>
-<p>Create <code class="language-plaintext highlighter-rouge">/app/</code> as a real Jekyll page that mounts Vue:</p>
+        <!-- Sidebar -->
+        <aside class="md:col-span-1 h-full">
+          <div class="sticky top-8">
 
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">app/index.html</code> → permalink <code class="language-plaintext highlighter-rouge">/app/</code></li>
-  <li>Contains <code class="language-plaintext highlighter-rouge">&lt;div id="app"&gt;&lt;/div&gt;</code></li>
-  <li>Loads the Vue entry module: <code class="language-plaintext highlighter-rouge">assets/app/main.js</code></li>
-</ul>
+  <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500 mb-4 dark:text-neutral-500">
+    Docs
+  </h2>
 
-<p>Result:</p>
-<ul>
-  <li>Visiting <code class="language-plaintext highlighter-rouge">/dev-pages/app/</code> returns real HTML (Jekyll layout + SPA mount point)</li>
-</ul>
+  <ul class="space-y-3 text-sm">
+    
+      <li>
+        <a 
+          href="/dev-pages/docs/jekyll-vuejs-spa/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Jekyll Vuejs Spa
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/dev-pages/docs/github-merges/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Github Merges
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/dev-pages/docs/testpost/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          My New Post
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/dev-pages/docs/tailwind/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Tailwind
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/dev-pages/docs/markdown/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Markdown
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/dev-pages/docs/jekyll/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          underline text-slate-900 dark:text-neutral-100">
+          Jekyll
+        </a>
+      </li>
+    
+      <li>
+        <a 
+          href="/dev-pages/docs/github-pages/"
+          class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          ">
+          Github Pages
+        </a>
+      </li>
+    
+  </ul>
+  <a
+        id="add-page"
+        href="https://github.com/cameronokeefe-topstep/dev-pages/tree/main/_posts"
+        class="inline-flex items-center rounded-md border border-slate-300 px-1.5 py-1.5 mt-4 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-800"
+        target="_blank"
+      >
+        <span><!-- _includes/icon.html -->
 
-<h3 id="3-export-jekyll-content-as-json-for-vue">3) Export Jekyll content as JSON for Vue</h3>
-<p>Generate a JSON feed from <code class="language-plaintext highlighter-rouge">_posts</code> so the SPA can fetch content:</p>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+</svg></span>
+  </a>
 
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">posts.json</code> with:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">date</code>, <code class="language-plaintext highlighter-rouge">slug</code>, <code class="language-plaintext highlighter-rouge">url</code>, <code class="language-plaintext highlighter-rouge">content</code>, etc.</li>
-    </ul>
-  </li>
-  <li>Use <code class="language-plaintext highlighter-rouge">relative_url</code> so Jekyll automatically prefixes <code class="language-plaintext highlighter-rouge">baseurl</code></li>
-</ul>
+</div>
 
-<p>Result:</p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">/dev-pages/posts.json</code> becomes the SPA’s content API.</li>
-</ul>
+        </aside>
 
-<h3 id="4-use-vue-3--vue-router-with-hash-routing">4) Use Vue 3 + Vue Router with hash routing</h3>
-<p>Inside <code class="language-plaintext highlighter-rouge">assets/app/main.js</code>:</p>
-<ul>
-  <li>Use Vue Router with <code class="language-plaintext highlighter-rouge">createWebHashHistory()</code></li>
-  <li>Define routes like:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">/</code> (SPA home)</li>
-      <li><code class="language-plaintext highlighter-rouge">/post/:slug</code> (SPA post view)</li>
-    </ul>
-  </li>
-</ul>
+        <!-- Main Content -->
+        <main class="md:col-span-3 h-full article">
+          <article class="prose prose-lg max-w-none prose-slate dark:prose-invert dark:prose-headings:text-neutral-100 dark:prose-p:text-neutral-200 dark:prose-strong:text-neutral-100 dark:prose-a:text-sky-400 dark:hover:prose-a:text-sky-300 dark:prose-code:text-neutral-100 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-100">
+  <h1>Jekyll</h1>
+  <p class="text-slate-500 text-sm dark:text-neutral-400 mb-8">
+    February 24, 2026
+  </p>
 
-<p>Result:</p>
-<ul>
-  <li>SPA routes look like <code class="language-plaintext highlighter-rouge">/dev-pages/app/#/post/my-post</code></li>
-  <li>No server rewrite rules required.</li>
-</ul>
-
-<h3 id="5-handle-baseurl-correctly-critical">5) Handle baseurl correctly (critical)</h3>
-<p>Ensure fetch calls and static links include the base path:</p>
-
-<ul>
-  <li>Provide baseurl to JS via a global (e.g. <code class="language-plaintext highlighter-rouge">window.__BASEURL__ = "/dev-pages"</code>)</li>
-  <li>Fetch JSON using:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">${BASE}/posts.json</code></li>
-    </ul>
-  </li>
-</ul>
-
-<p>Result:</p>
-<ul>
-  <li>Works the same locally and on GitHub Pages project sites.</li>
-</ul>
-
-<h3 id="6-use-import-maps-or-cdn-esm-to-avoid-bundlers-optional-but-common">6) Use import maps or CDN ESM to avoid bundlers (optional but common)</h3>
-<p>If you are not using Vite:</p>
-<ul>
-  <li>Use an <code class="language-plaintext highlighter-rouge">importmap</code> in <code class="language-plaintext highlighter-rouge">app/index.html</code> for:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">vue</code></li>
-      <li><code class="language-plaintext highlighter-rouge">vue-router</code></li>
-    </ul>
-  </li>
-  <li>Prefer a browser-ready Vue build:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">vue.esm-browser.js</code></li>
-    </ul>
-  </li>
-</ul>
-
-<p>Result:</p>
-<ul>
-  <li>No Node build step required; the browser can load modules directly.</li>
-</ul>
-
-<h3 id="7-render-posts-in-vue-from-the-json-feed">7) Render posts in Vue from the JSON feed</h3>
-<p>In the SPA:</p>
-<ul>
-  <li>Home view fetches <code class="language-plaintext highlighter-rouge">posts.json</code> and lists items</li>
-  <li>Post view matches <code class="language-plaintext highlighter-rouge">:slug</code>, finds the post, and renders:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">v-html="post.content"</code> (Jekyll already converted Markdown → HTML)</li>
-    </ul>
-  </li>
-</ul>
-
-<p>Result:</p>
-<ul>
-  <li>SPA shows the same content as Jekyll’s static pages, but with dynamic routing/UI.</li>
-</ul>
-
-<hr />
-
-<h2 id="resulting-url-behavior">Resulting URL Behavior</h2>
-
-<h3 id="static-jekyll">Static (Jekyll)</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">/dev-pages/docs/my-post/</code> → full HTML page rendered by Jekyll</li>
-</ul>
-
-<h3 id="spa-vue">SPA (Vue)</h3>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">/dev-pages/app/#/post/my-post</code> → Vue renders content client-side</li>
-</ul>
-
-<p>These coexist cleanly because:</p>
-<ul>
-  <li>Jekyll owns <code class="language-plaintext highlighter-rouge">/docs/...</code></li>
-  <li>Vue owns hash routes under <code class="language-plaintext highlighter-rouge">/app/</code></li>
-</ul>
-
-<hr />
-
-<h2 id="recommended-next-steps">Recommended Next Steps</h2>
-<ul>
-  <li>Add a second feed for metadata-only lists (faster load)</li>
-  <li>Add client-side search (index posts at build time)</li>
-  <li>Add a shared “canonical link”:
-    <ul>
-      <li>SPA page links back to the static Jekyll URL (<code class="language-plaintext highlighter-rouge">post.url</code>)</li>
-    </ul>
-  </li>
-  <li>If the SPA grows, consider switching to Vite for:
-    <ul>
-      <li>bundling, smaller payloads, better DX</li>
-    </ul>
-  </li>
-</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[Vue.js + Jekyll Overview (Hybrid Static + SPA) layout: post title: “Jekyll + Vuejs SPA” —]]></summary></entry><entry><title type="html">Github Merges</title><link href="http://localhost:4000/dev-pages/docs/github-merges/" rel="alternate" type="text/html" title="Github Merges" /><published>2026-03-03T00:00:00-06:00</published><updated>2026-03-03T00:00:00-06:00</updated><id>http://localhost:4000/dev-pages/docs/github-merges</id><content type="html" xml:base="http://localhost:4000/dev-pages/docs/github-merges/"><![CDATA[<p><a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github">https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github</a></p>
-
-<h1 id="adding-a-commit-message-when-using-git-merge">Adding a Commit Message When Using <code class="language-plaintext highlighter-rouge">git merge</code></h1>
-
-<hr />
-
-<h2 id="-basic-syntax">✅ Basic Syntax</h2>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge branch-name <span class="nt">-m</span> <span class="s2">"Merge branch-name into dev"</span>
-</code></pre></div></div>
-
-<p>This command:</p>
-
-<ul>
-  <li>Performs the merge</li>
-  <li>Uses your provided commit message</li>
-  <li>Skips opening the default editor (like Vim)</li>
-</ul>
-
-<hr />
-
-<h2 id="-multi-line-commit-message">📝 Multi-line Commit Message</h2>
-
-<p>You can include a commit body by stacking multiple <code class="language-plaintext highlighter-rouge">-m</code> flags:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge branch-name <span class="se">\</span>
-  <span class="nt">-m</span> <span class="s2">"Merge branch-name into dev"</span> <span class="se">\</span>
-  <span class="nt">-m</span> <span class="s2">"Adds new banner component, styles, and CMS schema updates."</span>
-</code></pre></div></div>
-
-<ul>
-  <li>The first <code class="language-plaintext highlighter-rouge">-m</code> becomes the <strong>commit title</strong></li>
-  <li>The second <code class="language-plaintext highlighter-rouge">-m</code> becomes the <strong>commit body</strong></li>
-</ul>
-
-<hr />
-
-<h2 id="-important-notes">⚠ Important Notes</h2>
-
-<ul>
-  <li>The <code class="language-plaintext highlighter-rouge">-m</code> flag only applies if Git creates a <strong>merge commit</strong>.</li>
-  <li>If the merge is a <strong>fast-forward</strong>, Git will not create a merge commit — so no message will be used.</li>
-</ul>
-
-<p>If you want to <strong>force a merge commit</strong> (even when fast-forward is possible), use:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge <span class="nt">--no-ff</span> branch-name <span class="nt">-m</span> <span class="s2">"Merge branch-name into dev"</span>
-</code></pre></div></div>
-
-<h3 id="why-use---no-ff">Why use <code class="language-plaintext highlighter-rouge">--no-ff</code>?</h3>
-
-<ul>
-  <li>Preserves branch history</li>
-  <li>Makes feature merges clearly visible in the commit log</li>
-  <li>Cleaner for release tracking</li>
-  <li>Common in team workflows</li>
-</ul>
-
-<hr />
-
-<h2 id="-example-standard-team-workflow">🚀 Example: Standard Team Workflow</h2>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout dev
-git pull origin dev
-git merge <span class="nt">--no-ff</span> branch-name <span class="nt">-m</span> <span class="s2">"Merge branch-name into dev"</span>
-git push origin dev
-</code></pre></div></div>
-
-<p>This ensures:</p>
-
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">dev</code> is up to date</li>
-  <li>The merge creates a visible merge commit</li>
-  <li>The updated branch is pushed to remote</li>
-</ol>
-
-<hr />
-
-<p>If you’d like, you can also explore:</p>
-
-<ul>
-  <li>Using <code class="language-plaintext highlighter-rouge">--squash</code> merges</li>
-  <li>Rebasing instead of merging</li>
-  <li>Best practices for CI/CD pipelines</li>
-</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github]]></summary></entry><entry><title type="html">Jekyll</title><link href="http://localhost:4000/dev-pages/docs/jekyll/" rel="alternate" type="text/html" title="Jekyll" /><published>2026-02-24T00:00:00-06:00</published><updated>2026-02-24T00:00:00-06:00</updated><id>http://localhost:4000/dev-pages/docs/jekyll</id><content type="html" xml:base="http://localhost:4000/dev-pages/docs/jekyll/"><![CDATA[<p><a href="https://jekyllrb.com/docs/">https://jekyllrb.com/docs/</a></p>
+  <p><a href="https://jekyllrb.com/docs/">https://jekyllrb.com/docs/</a></p>
 
 <h1 id="jekyll-websites--overview">Jekyll Websites — Overview</h1>
 
@@ -785,1087 +702,106 @@ layout: default
   <li>Add first post in <code class="language-plaintext highlighter-rouge">_posts/</code></li>
   <li>Serve locally with <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve --livereload</code></li>
   <li>Deploy <code class="language-plaintext highlighter-rouge">_site/</code> or let GitHub Pages build (depending on plugin needs)</li>
-</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[https://jekyllrb.com/docs/]]></summary></entry><entry><title type="html">Markdown</title><link href="http://localhost:4000/dev-pages/docs/markdown/" rel="alternate" type="text/html" title="Markdown" /><published>2026-02-24T00:00:00-06:00</published><updated>2026-02-24T00:00:00-06:00</updated><id>http://localhost:4000/dev-pages/docs/markdown</id><content type="html" xml:base="http://localhost:4000/dev-pages/docs/markdown/"><![CDATA[<p><a href="https://www.markdownguide.org/basic-syntax/">https://www.markdownguide.org/basic-syntax/</a></p>
-
-<h2 id="markdown-cheatsheet">Markdown Cheatsheet</h2>
-
-<p>A quick, practical reference for <strong>writing Markdown</strong> (GitHub-flavored where applicable).</p>
-
-<hr />
-
-<h2 id="1-headings">1. Headings</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># H1</span>
-<span class="gu">## H2</span>
-<span class="gu">### H3</span>
-<span class="gu">#### H4</span>
-<span class="gu">##### H5</span>
-<span class="gu">###### H6</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="2-text-formatting">2. Text Formatting</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gs">**Bold**</span>
-<span class="ge">*Italic*</span>
-<span class="ges">***Bold &amp; Italic***</span>
-~~Strikethrough~~
-<span class="sb">`Inline code`</span>
-</code></pre></div></div>
-
-<p>Result:</p>
-<ul>
-  <li><strong>Bold</strong></li>
-  <li><em>Italic</em></li>
-  <li><strong><em>Bold &amp; Italic</em></strong></li>
-  <li><del>Strikethrough</del></li>
-  <li><code class="language-plaintext highlighter-rouge">Inline code</code></li>
 </ul>
 
-<hr />
-
-<h2 id="3-paragraphs--line-breaks">3. Paragraphs &amp; Line Breaks</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is a paragraph.
-
-This is another paragraph.
-</code></pre></div></div>
-
-<p>Line break (GitHub-flavored): end a line with two spaces.</p>
-
-<hr />
-
-<h2 id="4-lists">4. Lists</h2>
-
-<h3 id="unordered">Unordered</h3>
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">-</span> Item
-<span class="p">-</span> Item
-<span class="p">  -</span> Nested item
-</code></pre></div></div>
-
-<h3 id="ordered">Ordered</h3>
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">1.</span> First
-<span class="p">2.</span> Second
-<span class="p">3.</span> Third
-</code></pre></div></div>
-
-<h3 id="task-lists-github">Task Lists (GitHub)</h3>
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">-</span> [x] Done
-<span class="p">-</span> [ ] Todo
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="5-links">5. Links</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nv">Link text</span><span class="p">](</span><span class="sx">https://example.com</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h3 id="auto-links">Auto Links</h3>
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://example.com
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="6-images">6. Images</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![</span><span class="nv">Alt text</span><span class="p">](</span><span class="sx">image.png</span><span class="p">)</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="7-code-blocks">7. Code Blocks</h2>
-
-<h3 id="fenced-code-block">Fenced Code Block</h3>
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">js
-</span><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div></div>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-### Inline Code
-```md
-Use `npm install`
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="8-blockquotes">8. Blockquotes</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; This is a quote</span>
-<span class="gt">&gt;&gt; Nested quote</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="9-horizontal-rules">9. Horizontal Rules</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">---</span>
-<span class="p">***</span>
-<span class="ge">__</span>_
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="10-tables-github">10. Tables (GitHub)</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Name | Age | Role |
-|------|-----|------|
-| Sam  | 30  | Dev  |
-| Lee  | 28  | PM   |
-</code></pre></div></div>
-<p>Result:<br />
-<br />
-| Name | Age | Role |
-|——|—–|——|
-| Sam  | 30  | Dev  |
-| Lee  | 28  | PM   |</p>
-
-<p><br /></p>
-
-<p>Alignment:</p>
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Left | Center | Right |
-|:-----|:------:|------:|
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="11-escaping-characters">11. Escaping Characters</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="se">\*</span> <span class="se">\_</span> <span class="se">\#</span> <span class="se">\`</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="12-html-in-markdown">12. HTML in Markdown</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;b&gt;</span>Bold<span class="nt">&lt;/b&gt;</span>
-<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="13-emojis-github">13. Emojis (GitHub)</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:rocket: :sparkles: :bug:
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="14-footnotes-some-parsers">14. Footnotes (Some Parsers)</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Here is a footnote reference[^1].
-
-<span class="p">[</span><span class="ss">^1</span><span class="p">]:</span> <span class="sx">Footnote</span> text
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="15-collapsible-sections-github">15. Collapsible Sections (GitHub)</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;details&gt;</span>
-  <span class="nt">&lt;summary&gt;</span>Click to expand<span class="nt">&lt;/summary&gt;</span>
-
-  Hidden content
-<span class="nt">&lt;/details&gt;</span>
-</code></pre></div></div>
-<p>Result:<br />
-<br /></p>
-<details>
-  <summary>Click to expand</summary>
-
-  Hidden content
-</details>
-<p><br /></p>
-
-<hr />
-
-<h2 id="16-file-extensions">16. File Extensions</h2>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">.md</code></li>
-  <li><code class="language-plaintext highlighter-rouge">.markdown</code></li>
-</ul>
-
-<hr />
-
-<h2 id="17-common-use-cases">17. Common Use Cases</h2>
-
-<ul>
-  <li>README files</li>
-  <li>Documentation</li>
-  <li>GitHub issues &amp; PRs</li>
-  <li>Notes &amp; wikis</li>
-</ul>
-
-<hr />
-
-<h2 id="18-markdown-gotchas">18. Markdown Gotchas</h2>
-
-<ul>
-  <li>Blank lines matter</li>
-  <li>Indentation affects lists &amp; code blocks</li>
-  <li>Not all parsers support all features</li>
-</ul>
-
-<hr />
-
-<h2 id="19-github-flavored-markdown-extras">19. GitHub-Flavored Markdown Extras</h2>
-
-<ul>
-  <li>Tables</li>
-  <li>Task lists</li>
-  <li>Strikethrough</li>
-  <li>Syntax highlighting</li>
-</ul>
-
-<hr />
-
-<p><strong>Tip:</strong> Keep Markdown simple—readability beats clever formatting.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[https://www.markdownguide.org/basic-syntax/]]></summary></entry><entry><title type="html">Tailwind</title><link href="http://localhost:4000/dev-pages/docs/tailwind/" rel="alternate" type="text/html" title="Tailwind" /><published>2026-02-24T00:00:00-06:00</published><updated>2026-02-24T00:00:00-06:00</updated><id>http://localhost:4000/dev-pages/docs/tailwind</id><content type="html" xml:base="http://localhost:4000/dev-pages/docs/tailwind/"><![CDATA[<p><a href="https://tailwindcss.com/docs/installation/framework-guides/nextjs">https://tailwindcss.com/docs/installation/framework-guides/nextjs</a></p>
-
-<iframe src="https://www.youtube.com/embed/Xb8ajtvFLOk?si=bU8wsFIFT54OVk6B" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
-
-<h2 id="tailwind-css-cheatsheet">Tailwind CSS Cheatsheet</h2>
-
-<p>A practical reference for common <strong>Tailwind CSS</strong> utility classes (Tailwind v3+).</p>
-
-<hr />
-
-<h2 id="1-layout">1. Layout</h2>
-
-<h3 id="container">Container</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container mx-auto px-4"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="display">Display</h3>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>block | inline-block | inline | flex | inline-flex | grid | hidden
-</code></pre></div></div>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grid"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="position">Position</h3>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>static | relative | absolute | fixed | sticky
-</code></pre></div></div>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"relative"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"absolute top-0 right-0"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="z-index">Z-Index</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"z-10"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="2-flexbox">2. Flexbox</h2>
-
-<h3 id="direction--wrap">Direction &amp; Wrap</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex flex-row flex-wrap"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex flex-col"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="align-items--justify">Align Items / Justify</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"items-start items-center items-end"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"justify-start justify-center justify-between justify-end"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="gap">Gap</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gap-2 gap-4 gap-8"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="flex-sizing">Flex Sizing</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex-1"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex-none"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grow"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"shrink-0"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="3-grid">3. Grid</h2>
-
-<h3 id="columns--rows">Columns / Rows</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grid grid-cols-1 md:grid-cols-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grid grid-rows-2"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="spans">Spans</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-span-2 row-span-2"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="gap-1">Gap</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gap-4"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="4-spacing">4. Spacing</h2>
-
-<h3 id="padding--margin">Padding / Margin</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"p-4 px-6 py-2"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"m-4 mx-auto my-2"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="space-between-children">Space Between (children)</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"space-y-4"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"space-x-2"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="5-sizing">5. Sizing</h2>
-
-<h3 id="width--height">Width / Height</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"w-full h-screen"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"w-64 h-48"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"min-h-screen"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"max-w-3xl"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="aspect-ratio">Aspect Ratio</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"aspect-video"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="6-typography">6. Typography</h2>
-
-<h3 id="font-size--weight">Font Size / Weight</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-sm text-base text-lg text-xl text-2xl"</span><span class="nt">&gt;&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"font-normal font-medium font-semibold font-bold"</span><span class="nt">&gt;&lt;/p&gt;</span>
-</code></pre></div></div>
-
-<h3 id="line-height--tracking">Line Height / Tracking</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"leading-tight leading-normal leading-relaxed"</span><span class="nt">&gt;&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"tracking-tight tracking-wide"</span><span class="nt">&gt;&lt;/p&gt;</span>
-</code></pre></div></div>
-
-<h3 id="alignment">Alignment</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-left text-center text-right"</span><span class="nt">&gt;&lt;/p&gt;</span>
-</code></pre></div></div>
-
-<h3 id="text-transform">Text Transform</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"uppercase lowercase capitalize"</span><span class="nt">&gt;&lt;/p&gt;</span>
-</code></pre></div></div>
-
-<h3 id="truncation">Truncation</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"truncate"</span><span class="nt">&gt;&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"line-clamp-2"</span><span class="nt">&gt;&lt;/p&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="7-colors">7. Colors</h2>
-
-<h3 id="text--background">Text / Background</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-gray-900 bg-gray-100"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-white bg-blue-600"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="opacity">Opacity</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-black/50"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-white/80"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="8-borders--radius">8. Borders &amp; Radius</h2>
-
-<h3 id="border">Border</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border border-gray-200"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border-t border-b"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="radius">Radius</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"rounded rounded-md rounded-lg rounded-xl rounded-2xl"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"rounded-full"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="9-shadows">9. Shadows</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"shadow shadow-md shadow-lg shadow-xl"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="10-backgrounds">10. Backgrounds</h2>
-
-<h3 id="gradients">Gradients</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="background-image--cover">Background Image / Cover</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-cover bg-center"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="11-effects">11. Effects</h2>
-
-<h3 id="opacity-1">Opacity</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"opacity-0 opacity-50 opacity-100"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="blur">Blur</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"blur-sm blur-md blur-lg"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="12-transitions--animation">12. Transitions &amp; Animation</h2>
-
-<h3 id="transition">Transition</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"transition duration-200 ease-in-out hover:scale-105"</span><span class="nt">&gt;&lt;/button&gt;</span>
-</code></pre></div></div>
-
-<h3 id="common">Common</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"transition-colors"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"transition-transform"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="13-hover--focus--active">13. Hover / Focus / Active</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 active:scale-95"</span><span class="nt">&gt;</span>
-  Button
-<span class="nt">&lt;/button&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="14-responsive-breakpoints">14. Responsive Breakpoints</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sm: 640px
-md: 768px
-lg: 1024px
-xl: 1280px
-2xl: 1536px
-</code></pre></div></div>
-
-<p>Example:</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"p-2 md:p-6 lg:p-10"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="15-dark-mode">15. Dark Mode</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="16-state-variants">16. State Variants</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hover: focus: active: disabled:
-first: last: odd: even:
-peer-<span class="ge">*, group-*</span>
-</code></pre></div></div>
-
-<h3 id="group-hover">Group Hover</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"group"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"group-hover:underline"</span><span class="nt">&gt;</span>Hover parent<span class="nt">&lt;/span&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="peer">Peer</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"peer"</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hidden peer-focus:block"</span><span class="nt">&gt;</span>Shows on focus<span class="nt">&lt;/p&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="17-forms">17. Forms</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-blue-400"</span> <span class="nt">/&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="18-common-ui-patterns">18. Common UI Patterns</h2>
-
-<h3 id="card">Card</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"rounded-2xl border border-gray-200 bg-white p-6 shadow-md"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"text-lg font-semibold"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h3&gt;</span>
-  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt-2 text-sm text-gray-600"</span><span class="nt">&gt;</span>Body text<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="button">Button</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:scale-95 transition"</span><span class="nt">&gt;</span>
-  Click
-<span class="nt">&lt;/button&gt;</span>
-</code></pre></div></div>
-
-<h3 id="input--label">Input + Label</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"block text-sm font-medium text-gray-700"</span><span class="nt">&gt;</span>Email<span class="nt">&lt;/label&gt;</span>
-<span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"mt-1 w-full rounded-md border border-gray-300 px-3 py-2"</span> <span class="nt">/&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="19-customization">19. Customization</h2>
-
-<h3 id="arbitrary-values">Arbitrary Values</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"w-[420px] top-[3.25rem] bg-[#0f172a]"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<h3 id="extend-in-tailwindconfig">Extend in tailwind.config</h3>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// theme.extend: colors, spacing, fonts, etc.</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="20-gotchas--tips">20. Gotchas &amp; Tips</h2>
-
-<ul>
-  <li>Prefer <code class="language-plaintext highlighter-rouge">gap-*</code> over margins for spacing in flex/grid.</li>
-  <li>Use <code class="language-plaintext highlighter-rouge">container mx-auto</code> for centered layouts.</li>
-  <li>Use <code class="language-plaintext highlighter-rouge">prose</code> (Typography plugin) for rich text.</li>
-  <li>Use <code class="language-plaintext highlighter-rouge">clsx</code>/<code class="language-plaintext highlighter-rouge">cn</code> helper for conditional classes.</li>
-</ul>
-
-<hr />
-
-<p><strong>Tip:</strong> Build by composing utilities; extract components when repetition shows up.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[https://tailwindcss.com/docs/installation/framework-guides/nextjs]]></summary></entry><entry><title type="html">My New Post</title><link href="http://localhost:4000/dev-pages/docs/testpost/" rel="alternate" type="text/html" title="My New Post" /><published>2026-02-24T00:00:00-06:00</published><updated>2026-02-24T00:00:00-06:00</updated><id>http://localhost:4000/dev-pages/docs/testpost</id><content type="html" xml:base="http://localhost:4000/dev-pages/docs/testpost/"><![CDATA[<p>This post was added directly from Github. Once commited, the workfow automatically runs and publishes the new page.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[This post was added directly from Github. Once commited, the workfow automatically runs and publishes the new page.]]></summary></entry><entry><title type="html">Github Pages</title><link href="http://localhost:4000/dev-pages/docs/github-pages/" rel="alternate" type="text/html" title="Github Pages" /><published>2026-02-23T00:00:00-06:00</published><updated>2026-02-23T00:00:00-06:00</updated><id>http://localhost:4000/dev-pages/docs/github-pages</id><content type="html" xml:base="http://localhost:4000/dev-pages/docs/github-pages/"><![CDATA[<p><a href="https://docs.github.com/en/pages">https://docs.github.com/en/pages</a></p>
-
-<h1 id="jekyll--github-pages--complete-user-guide">Jekyll + GitHub Pages — Complete User Guide</h1>
-
-<p>A practical, step-by-step guide to building and deploying a Jekyll website using GitHub Pages.</p>
-
-<hr />
-
-<h1 id="table-of-contents">Table of Contents</h1>
-
-<ol>
-  <li>What You’re Building</li>
-  <li>Prerequisites</li>
-  <li>Creating a New Jekyll Site</li>
-  <li>Understanding the Project Structure</li>
-  <li>Running Jekyll Locally</li>
-  <li>Creating Posts and Pages</li>
-  <li>Configuring <code class="language-plaintext highlighter-rouge">_config.yml</code></li>
-  <li>Using Liquid (Templating Basics)</li>
-  <li>Preparing for GitHub Pages</li>
-  <li>Deploying to GitHub Pages</li>
-  <li>Custom Domains</li>
-  <li>Troubleshooting</li>
-  <li>Best Practices</li>
-</ol>
-
-<hr />
-
-<h1 id="1-what-youre-building">1. What You’re Building</h1>
-
-<p>Jekyll is a <strong>static site generator</strong>.</p>
-
-<p>You write:</p>
-<ul>
-  <li>Markdown</li>
-  <li>HTML</li>
-  <li>YAML config</li>
-</ul>
-
-<p>Jekyll generates:</p>
-<ul>
-  <li>Static HTML files</li>
-</ul>
-
-<p>GitHub Pages hosts:</p>
-<ul>
-  <li>The generated static site</li>
-</ul>
-
-<hr />
-
-<h1 id="2-prerequisites">2. Prerequisites</h1>
-
-<p>Install:</p>
-
-<ul>
-  <li>Ruby (recommended via rbenv or asdf)</li>
-  <li>Bundler</li>
-  <li>Git</li>
-  <li>GitHub account</li>
-</ul>
-
-<p>Check versions:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby <span class="nt">-v</span>
-gem <span class="nt">-v</span>
-bundle <span class="nt">-v</span>
-git <span class="nt">--version</span>
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="3-creating-a-new-jekyll-site">3. Creating a New Jekyll Site</h1>
-
-<h2 id="create-project">Create project</h2>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>jekyll bundler
-jekyll new my-site
-<span class="nb">cd </span>my-site
-bundle <span class="nb">install</span>
-</code></pre></div></div>
-
-<h2 id="project-structure">Project structure</h2>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my-site/
-├── _config.yml
-├── _posts/
-├── _layouts/
-├── _includes/
-├── _site/        (generated)
-├── Gemfile
-└── index.md
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="4-running-jekyll-locally">4. Running Jekyll Locally</h1>
-
-<p>Start the development server:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve <span class="nt">--livereload</span>
-</code></pre></div></div>
-
-<p>Visit:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:4000
-</code></pre></div></div>
-
-<p>Build only:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll build
-</code></pre></div></div>
-
-<p>Clean:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll clean
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="5-creating-posts">5. Creating Posts</h1>
-
-<h2 id="file-naming-format">File naming format</h2>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_posts/YYYY-MM-DD-title.md
-</code></pre></div></div>
-
-<p>Example:</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">My</span><span class="nv"> </span><span class="s">First</span><span class="nv"> </span><span class="s">Post"</span>
-<span class="na">date</span><span class="pi">:</span> <span class="s">2026-02-24</span>
-<span class="na">categories</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">blog</span><span class="pi">]</span>
-<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">jekyll</span><span class="pi">,</span> <span class="nv">github</span><span class="pi">]</span>
-<span class="nn">---</span>
-
-This is my first post.
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="6-creating-pages">6. Creating Pages</h1>
-
-<p>Create a page like <code class="language-plaintext highlighter-rouge">about.md</code>:</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">layout</span><span class="pi">:</span> <span class="s">page</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s">About</span>
-<span class="na">permalink</span><span class="pi">:</span> <span class="s">/about/</span>
-<span class="nn">---</span>
-
-This is the about page.
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="7-understanding-_configyml">7. Understanding <code class="language-plaintext highlighter-rouge">_config.yml</code></h1>
-
-<p>Example configuration:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">title</span><span class="pi">:</span> <span class="s">My Website</span>
-<span class="na">description</span><span class="pi">:</span> <span class="s">Personal blog</span>
-<span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://username.github.io"</span>
-<span class="na">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>   <span class="c1"># Use "/repo-name" for project sites</span>
-
-<span class="na">markdown</span><span class="pi">:</span> <span class="s">kramdown</span>
-<span class="na">permalink</span><span class="pi">:</span> <span class="s">/blog/:title/</span>
-
-<span class="na">timezone</span><span class="pi">:</span> <span class="s">America/New_York</span>
-
-<span class="na">plugins</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">jekyll-feed</span>
-  <span class="pi">-</span> <span class="s">jekyll-seo-tag</span>
-</code></pre></div></div>
-
-<h2 id="important-baseurl">Important: baseurl</h2>
-
-<ul>
-  <li>User site → <code class="language-plaintext highlighter-rouge">""</code></li>
-  <li>Project site → <code class="language-plaintext highlighter-rouge">"/repository-name"</code></li>
-</ul>
-
-<p>Example:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/my-repo"</span>
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="8-using-liquid-templating">8. Using Liquid (Templating)</h1>
-
-<h2 id="output-variables">Output variables</h2>
-
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Dev-pages
-Github Pages
-</code></pre></div></div>
-
-<h2 id="loop-posts">Loop posts</h2>
-
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul&gt;
-  
-    &lt;li&gt;
-      &lt;a href="/dev-pages/docs/jekyll-vuejs-spa/"&gt;
-        Jekyll Vuejs Spa
-      &lt;/a&gt;
-    &lt;/li&gt;
-  
-    &lt;li&gt;
-      &lt;a href="/dev-pages/docs/github-merges/"&gt;
-        Github Merges
-      &lt;/a&gt;
-    &lt;/li&gt;
-  
-    &lt;li&gt;
-      &lt;a href="/dev-pages/docs/testpost/"&gt;
-        My New Post
-      &lt;/a&gt;
-    &lt;/li&gt;
-  
-    &lt;li&gt;
-      &lt;a href="/dev-pages/docs/tailwind/"&gt;
-        Tailwind
-      &lt;/a&gt;
-    &lt;/li&gt;
-  
-    &lt;li&gt;
-      &lt;a href="/dev-pages/docs/markdown/"&gt;
-        Markdown
-      &lt;/a&gt;
-    &lt;/li&gt;
-  
-    &lt;li&gt;
-      &lt;a href="/dev-pages/docs/jekyll/"&gt;
-        Jekyll
-      &lt;/a&gt;
-    &lt;/li&gt;
-  
-    &lt;li&gt;
-      &lt;a href="/dev-pages/docs/github-pages/"&gt;
-        Github Pages
-      &lt;/a&gt;
-    &lt;/li&gt;
-  
-&lt;/ul&gt;
-</code></pre></div></div>
-
-<h2 id="conditionals">Conditionals</h2>
-
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-  &lt;p&gt;This is a blog post&lt;/p&gt;
-
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="9-preparing-for-github-pages">9. Preparing for GitHub Pages</h1>
-
-<h2 id="commit-your-project">Commit your project</h2>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init
-git add <span class="nb">.</span>
-git commit <span class="nt">-m</span> <span class="s2">"Initial commit"</span>
-</code></pre></div></div>
-
-<h2 id="create-github-repository">Create GitHub repository</h2>
-
-<ul>
-  <li>Go to GitHub</li>
-  <li>Click “New Repository”</li>
-  <li>Name it:</li>
-</ul>
-
-<p>User site:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>username.github.io
-</code></pre></div></div>
-
-<p>Project site:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my-project
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="10-deploying-to-github-pages">10. Deploying to GitHub Pages</h1>
-
-<h2 id="option-a--let-github-build-jekyll-recommended-for-simple-sites">Option A — Let GitHub Build Jekyll (Recommended for simple sites)</h2>
-
-<p>Push to GitHub:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add origin https://github.com/username/repo-name.git
-git branch <span class="nt">-M</span> main
-git push <span class="nt">-u</span> origin main
-</code></pre></div></div>
-
-<p>Then:</p>
-
-<ol>
-  <li>Go to Repository Settings</li>
-  <li>Click “Pages”</li>
-  <li>Under “Source” → Select:
-    <ul>
-      <li>Branch: <code class="language-plaintext highlighter-rouge">main</code></li>
-      <li>Folder: <code class="language-plaintext highlighter-rouge">/ (root)</code></li>
-    </ul>
-  </li>
-  <li>Save</li>
-</ol>
-
-<p>Your site will be available at:</p>
-
-<p>User site:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://username.github.io
-</code></pre></div></div>
-
-<p>Project site:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://username.github.io/repo-name/
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="option-b--deploy-built-_site-folder-advanced">Option B — Deploy Built <code class="language-plaintext highlighter-rouge">_site/</code> Folder (Advanced)</h2>
-
-<p>Build locally:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll build
-</code></pre></div></div>
-
-<p>Deploy <code class="language-plaintext highlighter-rouge">_site/</code> contents to <code class="language-plaintext highlighter-rouge">gh-pages</code> branch.</p>
-
-<p>Often done with GitHub Actions.</p>
-
-<hr />
-
-<h1 id="11-custom-domain">11. Custom Domain</h1>
-
-<ol>
-  <li>Add a <code class="language-plaintext highlighter-rouge">CNAME</code> file to project root:</li>
-</ol>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>example.com
-</code></pre></div></div>
-
-<ol>
-  <li>Commit and push</li>
-  <li>In GitHub Pages settings:
-    <ul>
-      <li>Add custom domain</li>
-    </ul>
-  </li>
-  <li>Configure DNS:
-    <ul>
-      <li>A record → GitHub IPs</li>
-      <li>OR CNAME → username.github.io</li>
-    </ul>
-  </li>
-</ol>
-
-<hr />
-
-<h1 id="12-github-pages-plugin-limitations">12. GitHub Pages Plugin Limitations</h1>
-
-<p>GitHub Pages only supports approved plugins.</p>
-
-<p>Supported examples:</p>
-<ul>
-  <li>jekyll-feed</li>
-  <li>jekyll-seo-tag</li>
-  <li>jekyll-sitemap</li>
-</ul>
-
-<p>If you need custom plugins:</p>
-<ul>
-  <li>Use GitHub Actions</li>
-  <li>Build site yourself</li>
-  <li>Deploy static output</li>
-</ul>
-
-<hr />
-
-<h1 id="13-drafts">13. Drafts</h1>
-
-<p>Create <code class="language-plaintext highlighter-rouge">_drafts/</code> folder.</p>
-
-<p>Add:</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_drafts/my-draft.md
-</code></pre></div></div>
-
-<p>Serve with:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve <span class="nt">--drafts</span>
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="14-common-issues">14. Common Issues</h1>
-
-<h2 id="broken-css-or-links">Broken CSS or Links</h2>
-
-<p>Cause:</p>
-<ul>
-  <li>Incorrect <code class="language-plaintext highlighter-rouge">baseurl</code></li>
-</ul>
-
-<p>Fix:
-Use:</p>
-
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/dev-pages/assets/css/style.css
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="404-errors">404 Errors</h2>
-
-<p>Cause:</p>
-<ul>
-  <li>Wrong permalink</li>
-  <li>Missing trailing slash</li>
-</ul>
-
-<hr />
-
-<h2 id="liquid-errors">Liquid Errors</h2>
-
-<p>Check terminal output for line numbers.</p>
-
-<hr />
-
-<h2 id="site-not-updating">Site Not Updating</h2>
-
-<p>Try:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll clean
-bundle <span class="nb">exec </span>jekyll serve
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="15-recommended-folder-structure">15. Recommended Folder Structure</h1>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
-├── _config.yml
-├── _layouts/
-├── _includes/
-├── _posts/
-├── _data/
-├── assets/
-│   ├── css/
-│   ├── js/
-│   └── img/
-└── index.md
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="16-best-practices">16. Best Practices</h1>
-
-<ul>
-  <li>Always use <code class="language-plaintext highlighter-rouge">relative_url</code></li>
-  <li>Keep layouts minimal</li>
-  <li>Use collections for custom content types</li>
-  <li>Avoid heavy plugins</li>
-  <li>Keep <code class="language-plaintext highlighter-rouge">_site/</code> out of git (add to <code class="language-plaintext highlighter-rouge">.gitignore</code>)</li>
-  <li>Test locally before pushing</li>
-</ul>
-
-<hr />
-
-<h1 id="17-quick-deployment-checklist">17. Quick Deployment Checklist</h1>
-
-<ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Install Ruby + Bundler</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create Jekyll site</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Configure <code class="language-plaintext highlighter-rouge">_config.yml</code></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Test locally</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create GitHub repository</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Push code</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Enable GitHub Pages</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Verify live URL</li>
-</ul>
-
-<hr />
-
-<h1 id="18-final-workflow-summary">18. Final Workflow Summary</h1>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Write Markdown
-      ↓
-Run jekyll serve
-      ↓
-Commit &amp; push to GitHub
-      ↓
-GitHub Pages builds site
-      ↓
-Website is live
-</code></pre></div></div>
-
-<hr />
-
-<p>You now have a complete workflow for building and deploying Jekyll sites with GitHub Pages.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[https://docs.github.com/en/pages]]></summary></entry></feed>
+</article>
+
+        </main>
+
+      </div>
+    </div>
+
+    <footer class="bg-slate-100 border-t border-slate-200 mt-16 dark:bg-neutral-950 dark:border-neutral-800">
+  <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 justify-items-start gap-8 text-sm text-slate-600 dark:text-neutral-400">
+    
+    <!-- About -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">About</h3>
+      <p>
+        A modern Markdown + Tailwind, Jekyll site hosted on Github Pages
+      </p>
+    </div>-->
+
+    <!-- Navigation -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">Navigation</h3>
+      <ul class="space-y-2">
+        
+          <li>
+            <a href="/dev-pages/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              Home
+            </a>
+          </li>
+        
+          <li>
+            <a href="/dev-pages/app/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              Docs
+            </a>
+          </li>
+        
+          <li>
+            <a href="/dev-pages/about/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              About
+            </a>
+          </li>
+        
+          <li>
+            <a href="/dev-pages/contact/" class="hover:text-slate-900 dark:hover:text-neutral-100">
+              Contact
+            </a>
+          </li>
+        
+      </ul>
+    </div>-->
+
+    <!-- Social -->
+    <!--<div>
+      <h3 class="font-semibold text-slate-900 mb-3 dark:text-neutral-100">Connect</h3>
+      <ul class="space-y-2">
+        
+        
+        
+      </ul>
+    </div>
+
+  </div>-->
+
+  <div class="text-center text-xs text-slate-500 dark:text-neutral-500">
+    © <span id="year"></span> Dev-pages. All rights reserved.
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById("theme-toggle");
+      var key = "theme";
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      if (!toggle) return;
+
+      function setTheme(theme, persist) {
+        var dark = theme === "dark";
+        root.classList.toggle("dark", dark);
+        root.setAttribute("data-theme", dark ? "dark" : "light");
+
+        if (persist) {
+          localStorage.setItem(key, dark ? "dark" : "light");
+        }
+
+        //toggle.textContent = dark ? "Light" : "Dark";
+        toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      }
+
+      setTheme(root.classList.contains("dark") ? "dark" : "light", false);
+
+      toggle.addEventListener("click", function () {
+        setTheme(root.classList.contains("dark") ? "light" : "dark", true);
+      });
+    })();
+  </script>
+</footer>
+
+
+  </body>
+</html>
