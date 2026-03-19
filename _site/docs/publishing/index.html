@@ -22,7 +22,7 @@
   <!-- Title -->
   <title>
     
-      Docs | Dev-pages
+      Publishing Processes | Dev-pages
     
   </title>
 
@@ -111,7 +111,7 @@
         <a 
           href="/dev-pages/docs/publishing/"
           class="block text-slate-600 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
-          ">
+          underline text-slate-900 dark:text-neutral-100">
           Publishing Processes
         </a>
       </li>
@@ -199,52 +199,130 @@
 
         <!-- Main Content -->
         <main class="md:col-span-3 h-full article">
-          <article>
-  <h1>Docs</h1>
-  <ul>
-  
-    <li>
-      <a href="/dev-pages/docs/publishing/">Publishing Processes</a>
-      <small>— Mar 19, 2026</small>
-    </li>
-  
-    <li>
-      <a href="/dev-pages/docs/jekyll-vuejs-spa/">Jekyll + Vuejs SPA</a>
-      <small>— Mar 05, 2026</small>
-    </li>
-  
-    <li>
-      <a href="/dev-pages/docs/github-merges/">Github Merges</a>
-      <small>— Mar 03, 2026</small>
-    </li>
-  
-    <li>
-      <a href="/dev-pages/docs/testpost/">My New Post</a>
-      <small>— Feb 24, 2026</small>
-    </li>
-  
-    <li>
-      <a href="/dev-pages/docs/tailwind/">Tailwind</a>
-      <small>— Feb 24, 2026</small>
-    </li>
-  
-    <li>
-      <a href="/dev-pages/docs/markdown/">Markdown</a>
-      <small>— Feb 24, 2026</small>
-    </li>
-  
-    <li>
-      <a href="/dev-pages/docs/jekyll/">Jekyll</a>
-      <small>— Feb 24, 2026</small>
-    </li>
-  
-    <li>
-      <a href="/dev-pages/docs/github-pages/">Github Pages</a>
-      <small>— Feb 23, 2026</small>
-    </li>
-  
+          <article class="prose prose-lg max-w-none prose-slate dark:prose-invert dark:prose-headings:text-neutral-100 dark:prose-p:text-neutral-200 dark:prose-strong:text-neutral-100 dark:prose-a:text-sky-400 dark:hover:prose-a:text-sky-300 dark:prose-code:text-neutral-100 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-100">
+  <h1>Publishing Processes</h1>
+  <p class="text-slate-500 text-sm dark:text-neutral-400 mb-8">
+    March 19, 2026
+  </p>
+
+  <h1 id="git-command-line-instructions-for-publishing-a-branch-to-dev-staging-and-prod-environments">GIT command-line instructions for publishing a branch to dev, staging, and prod environments</h1>
+
+<hr />
+
+<p>After setting up GIT locally and adding remote origin, use these steps for creating a branch and publishing edits to the various environments.</p>
+
+<h2 id="create-new-branch-from-main">Create new branch from ‘main’</h2>
+
+<p>Pull updates from repository:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch main
+git pull origin main
+</code></pre></div></div>
+
+<p>These commands:</p>
+<ul>
+  <li>Switch to the main branch</li>
+  <li>Pull branch from origin to update</li>
 </ul>
+
+<hr />
+
+<h2 id="create-new-branch-and-make-new-edits-locally">Create new branch and make new edits locally</h2>
+
+<p>Create a branch and run dev locally. Make any edits on this branch and commit changes when finished.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> new-branch-name
+</code></pre></div></div>
+
+<p>This command:</p>
+<ul>
+  <li>Creates a new branch named “new-branch-name”</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run storybook
+npm run dev
+</code></pre></div></div>
+
+<p>These commands:</p>
+<ul>
+  <li>Runs Storybook locally for component previewing and development</li>
+  <li>Runs the site locally for development</li>
+</ul>
+
+<p>After edits are completed, add files to GIT and commit the changes to the branch.</p>
+
+<p>First, double check to make sure you are on the correct branch:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git status
+</code></pre></div></div>
+
+<p>Then:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git status
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Message for commit"</span>
+</code></pre></div></div>
+
+<p>These commands:</p>
+<ul>
+  <li>Adds all edited files to the commit log</li>
+  <li>Commits the edits to the current branch</li>
+</ul>
+
+<p>Now the branch is ready to push or merge.</p>
+
+<hr />
+
+<h2 id="publishing-to-dev-merge">Publishing to dev (merge)</h2>
+
+<p>To publish to dev, the branch just needs to be merged with the “dev” branch. The dev project workflow is set up to publish any time edits are pushed to the dev branch (GitHub Actions). The process usually takes 5-10 minutes to complete once merged.</p>
+
+<p>First, once again, switch to the main branch and pull any updates from the remote origin:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch main
+git pull origin main
+</code></pre></div></div>
+
+<p>Then switch to the dev branch and merge the new branch into it. Then push dev to the remote origin to run the workflow:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch dev
+git merge <span class="nt">--no-ff</span> new-branch-name <span class="nt">-m</span> <span class="s2">"Merge branch-name into dev"</span>
+git push origin dev
+</code></pre></div></div>
+
+<p>These commands:</p>
+<ul>
+  <li>Switch to the dev branch</li>
+  <li>Merges edits from new-branch-name</li>
+  <li>pushes the updated dev branch to the remote origin</li>
+</ul>
+
+<h3 id="why-use---no-ff">Why use <code class="language-plaintext highlighter-rouge">--no-ff</code>?</h3>
+
+<ul>
+  <li>Preserves branch history</li>
+  <li>Makes feature merges clearly visible in the commit log</li>
+  <li>Cleaner for release tracking</li>
+  <li>Common in team workflows</li>
+</ul>
+
+<hr />
+
+<h2 id="publishing-to-staging">Publishing to staging</h2>
+
+<p>To publish to staging, the new branch must be pushed to the remote origin and have a Pull Request added. Once the Pull Request is merged with the main branch, the staging publish workflow will be triggered.</p>
+
+<p>Switch to the new branch or confirm that your are currently on it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git swithch new-branch-name
+git status
+git push origin new-branch-name
+</code></pre></div></div>
+
+<p>Once the branch has been uploaded to the remote repository, navigate to Github and follow the steps to create and merge a pull request…</p>
+
 </article>
+
         </main>
 
       </div>
