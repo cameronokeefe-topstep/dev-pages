@@ -183,16 +183,16 @@
   <a
         id="add-page"
         href="https://github.com/cameronokeefe-topstep/dev-pages/tree/main/_posts"
-        class="inline-flex items-center rounded-md border border-slate-300 px-1.5 py-1.5 mt-4 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-800"
+         class="block text-slate-600 mt-4 hover:text-slate-900 transition dark:text-neutral-400 dark:hover:text-neutral-100
+          "
         target="_blank"
       >
-        <span><!-- _includes/icon.html -->
+         <span class="inline-flex items-center rounded-md border border-slate-300 px-1.5 py-1.5 mt-4 text-xs font-normal text-slate-700 hover:bg-slate-100 transition dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-800"><!-- _includes/icon.html -->
 
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-</svg></span>
+</svg> page</span>
   </a>
-
 </div>
 
         </aside>
@@ -314,12 +314,27 @@ git push origin dev
 
 <p>Switch to the new branch or confirm that your are currently on it:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git swithch new-branch-name
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch new-branch-name
 git status
 git push origin new-branch-name
 </code></pre></div></div>
 
 <p>Once the branch has been uploaded to the remote repository, navigate to Github and follow the steps to create and merge a pull request…</p>
+
+<hr />
+
+<h2 id="publishing-to-prod">Publishing to prod</h2>
+
+<p>Use the Marketing CI workflow to publish main branch to prod:</p>
+
+<p>Branch: main
+Deployment environment: prod</p>
+
+<p>Run Workflow</p>
+
+<ul>
+  <li>workflows can be cancelled in process once they begin running</li>
+</ul>
 
 </article>
 
