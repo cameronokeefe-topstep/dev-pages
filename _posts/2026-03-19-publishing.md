@@ -128,3 +128,20 @@ Deployment environment: prod
 Run Workflow
 
 * workflows can be cancelled in process once they begin running
+
+
+## Rolling back changes
+
+To roll back to a previous commit:
+
+- Find the commit hash using
+
+```bash
+git log --oneline
+```
+
+- THen reset the main brnach using:
+
+```bash
+git reset --hard <commit-hash>
+```
