@@ -30,14 +30,14 @@ Then checkout the update-redirects branch
 git checkout update-redirects
 ```
 
-Add a comment to the bottom of the next.config file to note the redirect added and have an edit to commit for the PR. Then push the branch to remote.
+Add a comment to the bottom of the next.config file to note the redirect added and have an edit to commit to the branch.
 
 ```bash
 git add .
 git commit -m "Update redirect note"
 ```
 
-## Push the update-redirects branch and create PR
+## Push the update-redirects branch to remote and create PR
 
 Push the update-redirects branch to remote
 
