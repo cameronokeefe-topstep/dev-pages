@@ -9,309 +9,323 @@ Node conversion script for converting Sanity JSON data to CSV for import to Webf
 
 # Sanity → Webflow Blog Migration Script
 
-This project provides a Node.js script to migrate blog content from **Sanity** to **Webflow CMS**.
+This script migrates blog content from a **Sanity dataset (API or local export)** into a format compatible with **Webflow CMS import (CSV/JSON)**.
 
 It supports:
 
-* ✅ Full dataset migration
-* ✅ Single post test runs (by slug, ID, or title)
-* ✅ Local dataset exports (NDJSON / JSON)
-* ✅ Portable Text → HTML conversion
-* ✅ CSV output for Webflow import
-* ✅ Preview mode for safe testing
+* Full blog content (title, slug, summary, etc.)
+* Rich `pageBuilder` → HTML conversion
+* Image handling (including local assets + filenames)
+* SEO field extraction and flattening
+* Preview mode for safe testing
+* Optional asset URL transformation
 
 ---
 
-# 🚀 Getting Started
+# Features
 
-## 1. Install dependencies
+## Content Migration
+
+* Converts Sanity `blog` documents into Webflow-ready fields
+* Preserves:
+
+  * Title, slug, summary
+  * Author + topics
+  * Publish date
+  * Featured image
+
+## Page Builder → HTML
+
+Supports:
+
+* `row` → rich text
+* `fullWidthImage`
+* `table`
+* `section-heading`
+* `embedCode`
+* graceful fallback for unsupported blocks
+
+## Image Handling
+
+* Resolves images from:
+
+  * API (`asset->url`)
+  * local dataset (`_sanityAsset`)
+* Maps images using `assets.json`
+* Injects:
+
+```html
+<img src="..." data-file-name="image.png" />
+```
+
+## SEO Support
+
+Flattens nested Sanity `seo` object into Webflow fields:
+
+* Meta title / description
+* Keywords
+* No-follow flag
+* Open Graph (title, description, image, etc.)
+* Twitter fields
+* Additional meta tags (JSON)
+
+## Preview Mode
+
+Inspect output without writing files:
+
+* HTML preview
+* SEO fields
+* CSV structure
+
+---
+
+# Installation
 
 ```bash
 npm install
 ```
 
+Required dependencies:
+
+* `@sanity/client`
+* `@portabletext/to-html`
+* `json2csv`
+* `dotenv`
+
 ---
 
-## 2. Configure environment variables
+# ⚙️ Environment Variables
 
-Create a `.env` file:
+Create a `.env.local` file (only required for API mode):
 
-```bash
+```env
 SANITY_PROJECT_ID=your_project_id
 SANITY_DATASET=production
 SANITY_API_VERSION=2025-01-01
-SANITY_TOKEN=your_read_token
-```
-
-> ⚠️ Required for API mode and image URL generation
-
----
-
-## 3. Run the script
-
-### Preview a single post (recommended first step)
-
-```bash
-npm run preview:slug
-```
-
-Or manually:
-
-```bash
-node migrate-sanity-blog-to-webflow.mjs --slug=my-blog-post --preview --no-write
+SANITY_TOKEN=your_token_if_needed
 ```
 
 ---
 
-# 🧪 Testing Modes
+# Local Dataset Structure
 
-## Preview Mode (Safe)
+When using a local export:
 
-```bash
---preview
+```
+/export/
+  data.ndjson
+  assets.json
+  /images/
+    <asset-files>
 ```
 
-Prints:
+### Required files:
 
-* mapped fields
-* generated HTML
-* pageBuilder block types
-* final CSV object
-
-## No Write Mode
-
-```bash
---no-write
-```
-
-Prevents writing JSON/CSV files.
+* `data.ndjson` → Sanity export
+* `assets.json` → asset metadata (IMPORTANT)
+* `/images/` → downloaded image files
 
 ---
 
-# 🎯 Single Post Testing
+# ▶️ Usage
 
-Run migration on one post only:
-
-### By slug
-
-```bash
-node migrate-sanity-blog-to-webflow.mjs --slug=my-blog-post
-```
-
-### By ID
-
-```bash
-node migrate-sanity-blog-to-webflow.mjs --id=your-doc-id
-```
-
-### By title
-
-```bash
-node migrate-sanity-blog-to-webflow.mjs --title="My Blog Post"
-```
-
----
-
-# 📦 Local Dataset Mode
-
-Use a Sanity export file instead of the API.
-
-## Supported formats
-
-* `.ndjson` (Sanity CLI export)
-* `.json` (array or `{ documents: [] }`)
-
-## Example
+## 1. Preview a Single Post (Recommended First Step)
 
 ```bash
 node migrate-sanity-blog-to-webflow.mjs \
-  --local-file=./sanity-export.ndjson \
-  --slug=my-blog-post \
+  --local-file=./export/data.ndjson \
+  --assets-file=./export/assets.json \
+  --images-dir=./export/images \
+  --slug=your-post-slug \
   --preview \
   --no-write
 ```
 
 ---
 
-# 🔄 Full Migration
-
-Export all blog posts:
+## 2. Export a Single Post
 
 ```bash
-npm run migrate
-```
-
-Or:
-
-```bash
-node migrate-sanity-blog-to-webflow.mjs
+node migrate-sanity-blog-to-webflow.mjs \
+  --local-file=./export/data.ndjson \
+  --assets-file=./export/assets.json \
+  --images-dir=./export/images \
+  --slug=your-post-slug
 ```
 
 ---
 
-# 📁 Output
+## 3. Export All Posts
+
+```bash
+node migrate-sanity-blog-to-webflow.mjs \
+  --local-file=./export/data.ndjson \
+  --assets-file=./export/assets.json \
+  --images-dir=./export/images
+```
+
+---
+
+## 4. Use Sanity API Instead of Local Data
+
+```bash
+node migrate-sanity-blog-to-webflow.mjs \
+  --slug=your-post-slug \
+  --preview
+```
+
+---
+
+# 🧪 CLI Flags
+
+| Flag               | Description                        |
+| ------------------ | ---------------------------------- |
+| `--local-file`     | Path to `data.ndjson`              |
+| `--assets-file`    | Path to `assets.json`              |
+| `--images-dir`     | Path to images folder              |
+| `--slug`           | Filter by slug                     |
+| `--id`             | Filter by Sanity `_id`             |
+| `--title`          | Filter by title                    |
+| `--preview`        | Print preview instead of exporting |
+| `--no-write`       | Prevent file output                |
+| `--asset-base-url` | Replace Sanity CDN URL             |
+
+---
+
+# Asset URL Transformation
+
+Optional: replace Sanity CDN URLs
+
+```bash
+--asset-base-url=https://assets.example.com/images
+```
+
+Transforms:
+
+```
+https://cdn.sanity.io/images/project/dataset/file.png
+↓
+https://assets.example.com/images/file.png
+```
+
+---
+
+# Output
 
 Files are written to:
 
 ```
 /output/
-```
-
-### Generated files
-
-* `webflow-blog-import-*.json`
-* `webflow-blog-import-*.csv`
-
----
-
-# 🧱 Field Mapping (Sanity → Webflow)
-
-| Sanity Field      | Webflow Field  |
-| ----------------- | -------------- |
-| title             | Name           |
-| slug.current      | Slug           |
-| subtitle          | Subtitle       |
-| summary           | Summary        |
-| pageBuilder       | Body (HTML)    |
-| publishedAt       | Published Date |
-| author->name      | Author         |
-| topics[]->title   | Topics         |
-| featuredImage.url | Featured Image |
-| featuredImage.alt | Image Alt      |
-
----
-
-# 🧠 How Content Is Transformed
-
-## Portable Text → HTML
-
-* paragraphs, headings, links
-* inline images
-* formatting marks
-
-## pageBuilder → HTML
-
-Supported block types:
-
-* `row` → rich text
-* `table` → HTML table
-* `section-heading`
-* `fullWidthImage`
-* `embedCode`
-
----
-
-# ⚠️ Known Limitations
-
-## Custom Modules
-
-The following require manual handling:
-
-* `button-insert`
-
-These are output as placeholders:
-
-```html
-<div>[Button Insert module requires manual mapping]</div>
+  webflow-blog-import-<slug>.json
+  webflow-blog-import-<slug>.csv
 ```
 
 ---
 
-## Webflow Constraints
+# Webflow Fields Included
 
-* No deeply nested content
-* Limited structured data support
-* Rich text may need cleanup after import
+## Core Fields
+
+* Name
+* Slug
+* Summary
+* Body (HTML)
+* Author
+* Topics
+* Published Date
+
+## Images
+
+* Featured Image
+* Featured Image Alt
+* Featured Image File Name
+
+## SEO Fields
+
+* SEO Meta Title
+* SEO Meta Description
+* SEO Keywords
+* SEO No Follow
+* SEO Open Graph Title
+* SEO Open Graph Description
+* SEO Open Graph URL
+* SEO Open Graph Site Name
+* SEO Open Graph Image
+* SEO Open Graph Image File Name
+* SEO Twitter Handle
+* SEO Twitter Creator
+* SEO Twitter Site
+* SEO Twitter Card Type
+* SEO Additional Meta Tags JSON
 
 ---
 
-## Image Handling
+# ⚠️ Important Notes
 
-Local dataset exports may contain asset references like:
+## 1. assets.json is Required for Filenames
+
+Without it:
+
+* `data-file-name` will be empty
+* image mapping may break
+
+---
+
+## 2. Relative vs Absolute Image URLs
+
+If using:
 
 ```
-image-abc123-1200x800-png
+--asset-base-url=/relative-path
 ```
 
-The script reconstructs URLs using:
-
-* `SANITY_PROJECT_ID`
-* `SANITY_DATASET`
+Make sure your final site serves images from that path.
 
 ---
 
-# 🧪 Recommended Workflow
+## 3. Webflow Rich Text Limits
 
-1. Export dataset from Sanity
-2. Run preview on a single post
-3. Inspect HTML output
-4. Export one post to CSV
-5. Import into Webflow test collection
-6. Validate formatting
-7. Fix edge cases
-8. Run full migration
+Very large blog posts may exceed Webflow limits.
 
 ---
 
-# 📜 Example Commands
+## 4. Unsupported Blocks
 
-## Preview local post
+Some blocks (e.g. `button-insert`) are exported as placeholders:
 
-```bash
-npm run preview:local
 ```
-
-## Export single post
-
-```bash
-npm run export:slug
-```
-
-## Export from local dataset
-
-```bash
-npm run export:local
+[Button Insert module requires manual mapping]
 ```
 
 ---
 
-# 🛠 Troubleshooting
+# Recommended Workflow
 
-## No posts found
+1. Run preview on 1 post
+2. Verify:
 
-* Check slug/title/ID matches exactly
-* Verify dataset contents
-
-## Images not showing
-
-* Ensure `.env` has correct project ID + dataset
-* Confirm asset references exist
-
-## HTML looks broken
-
-* Check `pageBuilder` structure
-* Inspect preview output
-* Verify custom blocks
+   * HTML structure
+   * images
+   * SEO fields
+3. Import into Webflow
+4. Validate rendering
+5. Batch migrate remaining posts
 
 ---
 
-# 🧩 Future Improvements
+# 🏁 Summary
 
-* Webflow API direct upload
-* Custom module serializers
-* Rich text cleanup pipeline
-* Multi-site migration support
+This script provides a complete pipeline for:
 
----
+* Sanity → structured HTML
+* Asset resolution (API + local)
+* SEO flattening
+* Webflow-ready export
 
-# ✅ Summary
+It is designed to be:
 
-This tool provides a safe, testable way to migrate structured blog content from Sanity into Webflow by:
-
-* flattening structured content
-* converting Portable Text → HTML
-* exporting Webflow-ready CSV
+* safe (preview mode)
+* flexible (API or local)
+* extensible (custom mappings)
 
 ---
-
-If you want enhancements like direct Webflow API publishing or custom module support, those can be layered on top of this script.
