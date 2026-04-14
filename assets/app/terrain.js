@@ -84,7 +84,7 @@ function applyTheme() {
   const darkMode = isDarkMode();
 
   const backgroundColor = darkMode ? 0x000000 : 0xffffff;
-  const terrainColor = darkMode ? 0xffffff : 0x000000;
+  const terrainColor = darkMode ? 0xffffff : 0x1e3880;
   const fogColor = darkMode ? 0x000000 : 0xffffff;
 
   renderer.setClearColor(backgroundColor, 1);
