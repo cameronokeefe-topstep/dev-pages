@@ -135,7 +135,7 @@ window.addEventListener("mousemove", (event) => {
 // Scroll: move camera up/down
 window.addEventListener("scroll", () => {
   const scrollTop = window.scrollY || window.pageYOffset;
-  cameraState.scrollYOffset = scrollTop * 0.02;
+  cameraState.scrollYOffset = scrollTop * -0.02;
 });
 
 function animateTerrain(time) {
